@@ -11,9 +11,9 @@ ReDoc      : http://127.0.0.1:8000/redoc
 
 from __future__ import annotations
 
-import importlib.util
 import logging
 import pathlib
+import sys
 import time
 from typing import Optional
 
@@ -22,21 +22,20 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 # ---------------------------------------------------------------------------
-# Import JavaSeleniumParser from sibling parser.py via importlib.
+# Import JavaSeleniumParser from our local parser.py.
 #
-# We avoid a plain `from parser import ...` because Python's (now-removed)
-# stdlib `parser` module can shadow local files on Python < 3.12.
-# Using spec_from_file_location is explicit and version-safe.
+# On Python 3.9–3.11 the deprecated stdlib `parser` module still exists as
+# a shared-library extension (.so/.dylib), NOT as a built-in, so it is
+# resolved via sys.path just like any other module.  Inserting our project
+# directory at position 0 guarantees that Python finds parser.py here before
+# it finds the stdlib copy.  On Python 3.12+ the stdlib module is gone, so
+# there is no conflict at all.
 # ---------------------------------------------------------------------------
-_HERE = pathlib.Path(__file__).parent
-_spec = importlib.util.spec_from_file_location("java_parser_module", _HERE / "parser.py")
-_mod = importlib.util.module_from_spec(_spec)           # type: ignore[arg-type]
-# Register in sys.modules BEFORE exec_module so that @dataclass and other
-# decorators that call sys.modules.get(cls.__module__) can resolve the module.
-import sys as _sys
-_sys.modules["java_parser_module"] = _mod
-_spec.loader.exec_module(_mod)                          # type: ignore[union-attr]
-JavaSeleniumParser = _mod.JavaSeleniumParser
+_HERE = str(pathlib.Path(__file__).parent.resolve())
+if _HERE not in sys.path:
+    sys.path.insert(0, _HERE)
+
+from parser import JavaSeleniumParser  # noqa: E402
 
 # ---------------------------------------------------------------------------
 # Logging
