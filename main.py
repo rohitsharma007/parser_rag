@@ -30,7 +30,11 @@ from pydantic import BaseModel, Field
 # ---------------------------------------------------------------------------
 _HERE = pathlib.Path(__file__).parent
 _spec = importlib.util.spec_from_file_location("java_parser_module", _HERE / "parser.py")
-_mod = importlib.util.module_from_spec(_spec)          # type: ignore[arg-type]
+_mod = importlib.util.module_from_spec(_spec)           # type: ignore[arg-type]
+# Register in sys.modules BEFORE exec_module so that @dataclass and other
+# decorators that call sys.modules.get(cls.__module__) can resolve the module.
+import sys as _sys
+_sys.modules["java_parser_module"] = _mod
 _spec.loader.exec_module(_mod)                          # type: ignore[union-attr]
 JavaSeleniumParser = _mod.JavaSeleniumParser
 
