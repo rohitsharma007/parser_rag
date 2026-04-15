@@ -319,9 +319,31 @@ app.add_middleware(
 
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
-    """Log method, path, status code, and elapsed time for every request."""
+    """Log method, path, status code, and elapsed time for every request.
+
+    Also catches any unhandled exception that escapes a route handler so
+    that uvicorn never has to emit a raw plain-text 500.  Without this
+    guard, Starlette's @app.middleware wrapping means route exceptions
+    surface here as real Python exceptions rather than HTTP responses.
+    """
+    from fastapi.responses import JSONResponse  # local import avoids circular refs
+
     t0 = time.perf_counter()
-    response = await call_next(request)
+    try:
+        response = await call_next(request)
+    except Exception as exc:  # noqa: BLE001
+        ms = (time.perf_counter() - t0) * 1000
+        logger.exception(
+            "Unhandled exception on %s %s (%.1f ms)",
+            request.method,
+            request.url.path,
+            ms,
+        )
+        return JSONResponse(
+            status_code=500,
+            content={"detail": f"Internal server error: {exc}"},
+        )
+
     ms = (time.perf_counter() - t0) * 1000
     logger.info(
         "%s %s → %d  (%.1f ms)",
@@ -421,11 +443,12 @@ async def parse_sample(name: str):
     t0 = time.perf_counter()
     try:
         result = _parser.parse_source(code, filename=f"{name}.java")
+        return _build_response(result.to_dict(), (time.perf_counter() - t0) * 1000)
+    except HTTPException:
+        raise
     except Exception as exc:
         logger.exception("Parser error on sample '%s'", name)
         raise HTTPException(status_code=500, detail=f"Parser error: {exc}") from exc
-
-    return _build_response(result.to_dict(), (time.perf_counter() - t0) * 1000)
 
 
 @app.post(
@@ -488,8 +511,11 @@ async def parse_java(
     t0 = time.perf_counter()
     try:
         result = _parser.parse_source(source, filename=filename)
+        # _build_response is inside try/except so Pydantic validation errors
+        # are also caught and returned as a readable 500 detail, not a raw crash.
+        return _build_response(result.to_dict(), (time.perf_counter() - t0) * 1000)
+    except HTTPException:
+        raise  # re-raise 422 / other HTTP exceptions untouched
     except Exception as exc:
         logger.exception("Parser failed for '%s'", filename)
         raise HTTPException(status_code=500, detail=f"Parser error: {exc}") from exc
-
-    return _build_response(result.to_dict(), (time.perf_counter() - t0) * 1000)
