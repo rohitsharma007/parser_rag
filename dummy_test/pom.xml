@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Project coordinates -->
+    <groupId>com.ntrs.demoapp</groupId>
+    <artifactId>atr-automation-framework</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>ATR Automation Framework</name>
+    <description>
+        TestNG-based automation framework for the ATR Web Portal.
+        Covers UI (Selenium/Playwright/Perfecto), API, and Mobile (Appium) layers.
+    </description>
+
+    <!-- ────────────────────────────────────────────────────────────────────── -->
+    <!-- Properties                                                             -->
+    <!-- ────────────────────────────────────────────────────────────────────── -->
+    <properties>
+        <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Dependency versions -->
+        <testng.version>7.8.0</testng.version>
+        <selenium.version>4.15.0</selenium.version>
+        <appium.version>8.6.0</appium.version>
+        <playwright.version>1.40.0</playwright.version>
+        <slf4j.version>2.0.9</slf4j.version>
+        <logback.version>1.4.11</logback.version>
+
+        <!-- Plugin versions -->
+        <maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
+        <maven.surefire.plugin.version>3.1.2</maven.surefire.plugin.version>
+
+        <!-- TestNG suite file — override via -DsuiteXmlFile=... -->
+        <suiteXmlFile>resources/test_suites/regression.xml</suiteXmlFile>
+    </properties>
+
+    <!-- ────────────────────────────────────────────────────────────────────── -->
+    <!-- Dependencies                                                           -->
+    <!-- ────────────────────────────────────────────────────────────────────── -->
+    <dependencies>
+
+        <!-- TestNG — test framework -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+        </dependency>
+
+        <!-- Selenium WebDriver — UI automation -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+
+        <!-- Selenium Chrome DevTools Protocol support -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-devtools-v117</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+
+        <!-- Appium Java Client — mobile automation -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>${appium.version}</version>
+        </dependency>
+
+        <!-- Playwright Java — headless browser testing -->
+        <dependency>
+            <groupId>com.microsoft.playwright</groupId>
+            <artifactId>playwright</artifactId>
+            <version>${playwright.version}</version>
+        </dependency>
+
+        <!-- SLF4J API — logging facade -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <!-- Logback — SLF4J implementation -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+
+        <!-- Jackson — JSON serialisation for API responses -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.15.3</version>
+        </dependency>
+
+        <!-- Apache HTTP Client — for direct HTTP API calls -->
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+            <version>5.2.1</version>
+        </dependency>
+
+    </dependencies>
+
+    <!-- ────────────────────────────────────────────────────────────────────── -->
+    <!-- Build configuration                                                    -->
+    <!-- ────────────────────────────────────────────────────────────────────── -->
+    <build>
+        <plugins>
+
+            <!-- Maven Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- Maven Surefire Plugin — runs TestNG tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin.version}</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <browser>${browser}</browser>
+                        <platform>${platform}</platform>
+                        <env>${env}</env>
+                        <headless>${headless}</headless>
+                    </systemPropertyVariables>
+                    <!-- Enable parallel test execution -->
+                    <parallel>methods</parallel>
+                    <threadCount>4</threadCount>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <!-- ────────────────────────────────────────────────────────────────────── -->
+    <!-- Profiles                                                               -->
+    <!-- ────────────────────────────────────────────────────────────────────── -->
+    <profiles>
+
+        <!-- Smoke tests only -->
+        <profile>
+            <id>smoke</id>
+            <properties>
+                <suiteXmlFile>resources/test_suites/smoke.xml</suiteXmlFile>
+            </properties>
+        </profile>
+
+        <!-- Regression tests (default) -->
+        <profile>
+            <id>regression</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suiteXmlFile>resources/test_suites/regression.xml</suiteXmlFile>
+            </properties>
+        </profile>
+
+        <!-- LambdaTest cloud execution -->
+        <profile>
+            <id>lambdatest</id>
+            <properties>
+                <suiteXmlFile>lambdatest/lt_suite.xml</suiteXmlFile>
+            </properties>
+        </profile>
+
+    </profiles>
+
+</project>
