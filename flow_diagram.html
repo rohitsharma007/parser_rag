@@ -16,11 +16,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 32px 16px;
+      padding: 24px 16px;
     }
 
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 700;
       letter-spacing: -0.02em;
       margin-bottom: 4px;
@@ -28,66 +28,95 @@
     }
 
     .subtitle {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: #94a3b8;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
     }
 
-    .btn-row {
+    /* ── toolbar ── */
+    .toolbar {
       display: flex;
-      gap: 12px;
-      margin-bottom: 28px;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
       flex-wrap: wrap;
       justify-content: center;
     }
+
+    .divider { width: 1px; height: 28px; background: #334155; margin: 0 4px; }
 
     button {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
+      gap: 6px;
+      padding: 8px 16px;
       border: none;
-      border-radius: 8px;
-      font-size: 0.875rem;
+      border-radius: 7px;
+      font-size: 0.82rem;
       font-weight: 600;
       cursor: pointer;
-      transition: opacity 0.15s, transform 0.1s;
+      transition: opacity .15s, transform .1s;
+      white-space: nowrap;
     }
-    button:hover  { opacity: 0.85; }
-    button:active { transform: scale(0.97); }
+    button:hover  { opacity: .85; }
+    button:active { transform: scale(.97); }
 
-    #btn-svg { background: #6366f1; color: #fff; }
-    #btn-png { background: #10b981; color: #fff; }
-    #btn-html { background: #f59e0b; color: #000; }
+    .btn-zoom  { background: #1e293b; color: #e2e8f0; border: 1px solid #334155; padding: 8px 12px; }
+    .btn-fit   { background: #334155; color: #e2e8f0; }
+    #btn-svg   { background: #6366f1; color: #fff; }
+    #btn-png   { background: #10b981; color: #fff; }
+    #btn-html  { background: #f59e0b; color: #000; }
 
-    .diagram-wrapper {
+    #zoom-level {
+      font-size: 0.78rem;
+      color: #94a3b8;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    /* ── viewport ── */
+    .viewport {
       background: #ffffff;
       border-radius: 16px;
-      padding: 32px 40px;
-      max-width: 1400px;
       width: 100%;
-      overflow-x: auto;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+      max-width: 1400px;
+      height: 78vh;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 25px 50px rgba(0,0,0,.5);
+      cursor: grab;
+    }
+    .viewport:active { cursor: grabbing; }
+
+    .pan-layer {
+      position: absolute;
+      top: 0; left: 0;
+      transform-origin: 0 0;
+      will-change: transform;
     }
 
     #diagram {
-      display: flex;
-      justify-content: center;
+      padding: 40px;
+      user-select: none;
     }
 
+    /* ── legend ── */
     .legend {
-      margin-top: 24px;
+      margin-top: 14px;
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
       justify-content: center;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       color: #64748b;
     }
-    .legend-item { display: flex; align-items: center; gap: 6px; }
-    .legend-dot {
-      width: 12px; height: 12px;
-      border-radius: 3px;
+    .legend-item { display: flex; align-items: center; gap: 5px; }
+    .legend-dot  { width: 11px; height: 11px; border-radius: 3px; flex-shrink: 0; }
+
+    .hint {
+      margin-top: 10px;
+      font-size: 0.72rem;
+      color: #475569;
     }
   </style>
 </head>
@@ -96,66 +125,75 @@
   <h1>Parser RAG — Repository Processing Flow</h1>
   <p class="subtitle">Two-pass AST pipeline: Symbol Discovery → Full Analysis → Vector Chunks</p>
 
-  <div class="btn-row">
-    <button id="btn-svg">⬇ Download SVG</button>
-    <button id="btn-png">⬇ Download PNG</button>
-    <button id="btn-html">⬇ Download HTML</button>
+  <div class="toolbar">
+    <!-- zoom controls -->
+    <button class="btn-zoom" id="zoomIn"  title="Zoom in">＋</button>
+    <span id="zoom-level">100%</span>
+    <button class="btn-zoom" id="zoomOut" title="Zoom out">－</button>
+    <button class="btn-fit"  id="fitBtn"  title="Fit to screen">⤢ Fit</button>
+
+    <div class="divider"></div>
+
+    <!-- downloads -->
+    <button id="btn-svg">⬇ SVG</button>
+    <button id="btn-png">⬇ PNG</button>
+    <button id="btn-html">⬇ HTML</button>
   </div>
 
-  <div class="diagram-wrapper">
-    <div id="diagram">
-      <div class="mermaid">
-flowchart LR
+  <div class="viewport" id="viewport">
+    <div class="pan-layer" id="panLayer">
+      <div id="diagram">
+        <div class="mermaid">
+flowchart TD
     subgraph INPUT["📁 Java Repository Input"]
-        direction TB
-        subgraph L1["① TestCases Layer"]
-            T1["🧪 TestNG / JUnit Classes\n• @Test, @BeforeClass, @AfterClass\n• @DataProvider, @Suite\n• Test methods"]
+        direction LR
+        subgraph L1["① TestCases  (test layer)"]
+            T1["🧪 TestNG / JUnit\n• @Test  @BeforeClass  @AfterClass\n• @DataProvider  @Suite\n• Test method bodies"]
         end
-        subgraph L2["② Pages Layer (UI)"]
-            T2["🖥️ Page Object Classes\n• Selenium: findElement()\n• click(), sendKeys()\n• getCurrentUrl(), getTitle()"]
+        subgraph L2["② Pages  (ui layer)"]
+            T2["🖥️ Page Objects\n• Selenium: findElement()\n• click()  sendKeys()  submit()\n• getCurrentUrl()  getTitle()"]
         end
-        subgraph L3["③ Business Functions Layer"]
-            T3["⚙️ Service / Utility Classes\n• WebPage.java\n• Helper & base classes\n• Business logic methods"]
+        subgraph L3["③ Business Functions  (service layer)"]
+            T3["⚙️ Services / Utils\n• WebPage.java  helpers\n• Base classes\n• Business logic methods"]
         end
     end
 
     subgraph P1["🔵 PASS 1 — Fast Symbol Discovery"]
-        RS["📂 RepoScanner\n──────────────\n• Walks all .java files\n• Assigns semantic layer\n  (test / ui / service /\n   api / page / utility)\n• Sorted deterministic output"]
-        EP1["⚡ Enhanced Parser · Fast Mode\n──────────────\n• Package declarations\n• Class names\n• Method signatures\n• Test annotations\n• Import statements"]
-        ST[("🗂️ Symbol Table\n──────────────\n• FQN → ClassSymbol map\n• SimpleName → candidates\n• Ambiguity resolution\n  via import context\n• O(1) cross-file lookup")]
+        direction LR
+        RS["📂 RepoScanner\n• Walk all .java files\n• Assign semantic layer\n  test · ui · service\n  api · page · utility\n• Deterministic sort"]
+        EP1["⚡ Enhanced Parser  Fast Mode\n• Package declarations\n• Class names\n• Method signatures\n• Test annotations\n• Import lists"]
+        ST[("🗂️ Symbol Table\n• FQN → ClassSymbol\n• SimpleName → candidates\n• Ambiguity resolution\n  via import context\n• O(1) cross-file lookup")]
+        RS --> EP1 --> ST
     end
 
-    subgraph P2["🟣 PASS 2 — Full AST + Relationship Analysis"]
-        EP2["🔍 Enhanced Parser · Full AST\n──────────────\n• Field declarations + types\n• Superclass (extends)\n• Interfaces (implements)\n• Object instantiations\n• Method call pairs\n• Selenium action detection\n• Block & line comments"]
-        RE["🔗 Relationship Extractor\n──────────────\n• EXTENDS\n• IMPLEMENTS\n• USES_STRONG (constructor)\n• USES_WEAK (method call)\n• Filters noise classes\n  (String, WebDriver, etc.)\n• Marks external deps"]
-        CB["📦 Chunk Builder\n──────────────\nClass Chunks:\n• Identity + structure\n• Dependency surface\n• No method bodies\n\nMethod Chunks:\n• Full source + context\n• SHA-256 chunk IDs\n• Metadata: layer,\n  annotations, actions,\n  field types, relations"]
+    subgraph P2["🟣 PASS 2 — Full AST  +  Relationship Analysis"]
+        direction LR
+        EP2["🔍 Enhanced Parser  Full AST\n• Field declarations + types\n• Superclass extends\n• Interfaces implements\n• Object instantiations\n• Method call receiver pairs\n• Selenium action detection\n• Block and line comments"]
+        RE["🔗 Relationship Extractor\n• EXTENDS\n• IMPLEMENTS\n• USES_STRONG  constructor\n• USES_WEAK  method call\n• Filters noise classes\n• Marks external deps"]
+        CB["📦 Chunk Builder\nClass Chunks\n• Identity + structure\n• Dependency surface\nMethod Chunks\n• Full source + context\n• SHA-256 chunk IDs\n• Metadata: layer  annotations\n  actions  field types"]
+        EP2 --> RE --> CB
     end
 
     subgraph OUT["🟢 Outputs"]
-        direction TB
-        O1["① Repository Parse Result\nAll classes + methods + full AST"]
-        O2["② Vector Embedding Chunks\nPGVector-ready with metadata"]
-        O3["③ Relationship Graph\nPostgreSQL · Neo4j compatible"]
-        O4["④ Errors & Warnings\nParse failures · ambiguous\nsymbols · encoding issues"]
+        direction LR
+        O1["① Repository Parse Result\nAll classes + methods + AST"]
+        O2["② Vector Embedding Chunks\nPGVector-ready + metadata"]
+        O3["③ Relationship Graph\nPostgreSQL · Neo4j"]
+        O4["④ Errors and Warnings\nParse failures · bad files\nambiguous symbols"]
     end
 
-    subgraph API["🌐 REST API (FastAPI)"]
-        A1["POST /parse/repo\nGET  /health\nSwagger UI at /docs"]
+    subgraph API["🌐 FastAPI REST Layer"]
+        A1["POST /parse/repo\nGET  /health\nSwagger UI · /docs"]
     end
 
     INPUT --> RS
-    RS --> EP1
-    EP1 --> ST
 
-    ST -. "SymbolTable\nfed into Pass 2" .-> EP2
-    ST -. "FQN resolution\nfor cross-file refs" .-> RE
+    ST -. "SymbolTable fed\ninto Pass 2" .-> EP2
+    ST -. "FQN resolution for\ncross-file refs" .-> RE
 
     L1 --> EP2
     L2 --> EP2
     L3 --> EP2
-
-    EP2 --> RE
-    RE --> CB
 
     CB --> O1
     CB --> O2
@@ -165,25 +203,28 @@ flowchart LR
 
     O1 --> API
     O2 --> API
+    O3 --> API
     O4 --> API
 
-    style P1 fill:#dbeafe,stroke:#3b82f6,color:#1e3a5f
-    style P2 fill:#ede9fe,stroke:#7c3aed,color:#2e1065
     style INPUT fill:#fef9c3,stroke:#ca8a04,color:#422006
-    style OUT fill:#dcfce7,stroke:#16a34a,color:#052e16
-    style API fill:#fee2e2,stroke:#dc2626,color:#450a0a
+    style P1    fill:#dbeafe,stroke:#3b82f6,color:#1e3a5f
+    style P2    fill:#ede9fe,stroke:#7c3aed,color:#2e1065
+    style OUT   fill:#dcfce7,stroke:#16a34a,color:#052e16
+    style API   fill:#fee2e2,stroke:#dc2626,color:#450a0a
+        </div>
       </div>
     </div>
-
-    <div class="legend">
-      <div class="legend-item"><div class="legend-dot" style="background:#ca8a04"></div> Input Layers</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#3b82f6"></div> Pass 1: Symbol Discovery</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#7c3aed"></div> Pass 2: Full AST Analysis</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#16a34a"></div> Outputs</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#dc2626"></div> REST API</div>
-      <div class="legend-item" style="color:#94a3b8">╌╌▶ dotted = error / data feed paths</div>
-    </div>
   </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#ca8a04"></div> Input Layers</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#3b82f6"></div> Pass 1: Symbol Discovery</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#7c3aed"></div> Pass 2: Full AST Analysis</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#16a34a"></div> Outputs</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#dc2626"></div> REST API</div>
+    <div class="legend-item" style="color:#94a3b8">╌╌▶ dotted = error / feed paths</div>
+  </div>
+  <p class="hint">Scroll to zoom · Drag to pan · Use ⤢ Fit to reset view</p>
 
   <script>
     mermaid.initialize({
@@ -193,61 +234,134 @@ flowchart LR
       securityLevel: "loose"
     });
 
-    function getSvgElement() {
-      return document.querySelector("#diagram svg");
+    /* ── pan + zoom ── */
+    const viewport = document.getElementById("viewport");
+    const panLayer = document.getElementById("panLayer");
+    const zoomLabel = document.getElementById("zoom-level");
+
+    let scale = 1, tx = 0, ty = 0;
+    let dragging = false, startX = 0, startY = 0, startTx = 0, startTy = 0;
+
+    function applyTransform() {
+      panLayer.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+      zoomLabel.textContent = Math.round(scale * 100) + "%";
     }
 
+    function clampScale(s) { return Math.min(Math.max(s, 0.2), 3); }
+
+    /* mouse wheel zoom centred on cursor */
+    viewport.addEventListener("wheel", e => {
+      e.preventDefault();
+      const rect = viewport.getBoundingClientRect();
+      const cx = e.clientX - rect.left;
+      const cy = e.clientY - rect.top;
+      const delta = e.deltaY < 0 ? 1.1 : 0.91;
+      const newScale = clampScale(scale * delta);
+      tx = cx - (cx - tx) * (newScale / scale);
+      ty = cy - (cy - ty) * (newScale / scale);
+      scale = newScale;
+      applyTransform();
+    }, { passive: false });
+
+    /* drag to pan */
+    viewport.addEventListener("mousedown", e => {
+      dragging = true;
+      startX = e.clientX; startY = e.clientY;
+      startTx = tx; startTy = ty;
+    });
+    window.addEventListener("mousemove", e => {
+      if (!dragging) return;
+      tx = startTx + (e.clientX - startX);
+      ty = startTy + (e.clientY - startY);
+      applyTransform();
+    });
+    window.addEventListener("mouseup", () => { dragging = false; });
+
+    /* zoom buttons */
+    document.getElementById("zoomIn").addEventListener("click", () => {
+      const cx = viewport.clientWidth / 2, cy = viewport.clientHeight / 2;
+      const newScale = clampScale(scale * 1.2);
+      tx = cx - (cx - tx) * (newScale / scale);
+      ty = cy - (cy - ty) * (newScale / scale);
+      scale = newScale;
+      applyTransform();
+    });
+    document.getElementById("zoomOut").addEventListener("click", () => {
+      const cx = viewport.clientWidth / 2, cy = viewport.clientHeight / 2;
+      const newScale = clampScale(scale * 0.83);
+      tx = cx - (cx - tx) * (newScale / scale);
+      ty = cy - (cy - ty) * (newScale / scale);
+      scale = newScale;
+      applyTransform();
+    });
+
+    /* fit to screen */
+    document.getElementById("fitBtn").addEventListener("click", fitToScreen);
+
+    function fitToScreen() {
+      const svgEl = document.querySelector("#diagram svg");
+      if (!svgEl) return;
+      const vw = viewport.clientWidth;
+      const vh = viewport.clientHeight;
+      const dw = svgEl.scrollWidth + 80;
+      const dh = svgEl.scrollHeight + 80;
+      const newScale = clampScale(Math.min(vw / dw, vh / dh) * 0.95);
+      scale = newScale;
+      tx = (vw - dw * scale) / 2;
+      ty = (vh - dh * scale) / 2;
+      applyTransform();
+    }
+
+    /* auto-fit once rendered */
+    mermaid.init(undefined, document.querySelectorAll(".mermaid")).then(() => {
+      setTimeout(fitToScreen, 150);
+    }).catch(() => {
+      setTimeout(fitToScreen, 800);
+    });
+
+    /* ── downloads ── */
+    function getSvg() { return document.querySelector("#diagram svg"); }
+
     document.getElementById("btn-svg").addEventListener("click", () => {
-      const svg = getSvgElement();
-      if (!svg) return alert("Diagram not ready yet, please wait.");
-      const serializer = new XMLSerializer();
-      const svgStr = serializer.serializeToString(svg);
-      const blob = new Blob([svgStr], { type: "image/svg+xml;charset=utf-8" });
-      triggerDownload(URL.createObjectURL(blob), "parser_rag_flow.svg");
+      const svg = getSvg();
+      if (!svg) return alert("Diagram not ready.");
+      const str = new XMLSerializer().serializeToString(svg);
+      download(new Blob([str], { type: "image/svg+xml" }), "parser_rag_flow.svg");
     });
 
     document.getElementById("btn-png").addEventListener("click", () => {
-      const svg = getSvgElement();
-      if (!svg) return alert("Diagram not ready yet, please wait.");
-
-      const svgEl = svg.cloneNode(true);
-      const bbox = svg.getBoundingClientRect();
-      const scale = 2;
-      const w = bbox.width  || 1200;
-      const h = bbox.height || 800;
-
-      svgEl.setAttribute("width",  w);
-      svgEl.setAttribute("height", h);
-      svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-
-      const svgStr = new XMLSerializer().serializeToString(svgEl);
+      const svg = getSvg();
+      if (!svg) return alert("Diagram not ready.");
+      const clone = svg.cloneNode(true);
+      const w = svg.scrollWidth, h = svg.scrollHeight;
+      clone.setAttribute("width", w);
+      clone.setAttribute("height", h);
+      clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+      const str = new XMLSerializer().serializeToString(clone);
       const img = new Image();
+      const SCALE = 2;
       img.onload = () => {
-        const canvas = document.createElement("canvas");
-        canvas.width  = w * scale;
-        canvas.height = h * scale;
-        const ctx = canvas.getContext("2d");
-        ctx.fillStyle = "#ffffff";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.scale(scale, scale);
+        const c = document.createElement("canvas");
+        c.width = w * SCALE; c.height = h * SCALE;
+        const ctx = c.getContext("2d");
+        ctx.fillStyle = "#fff";
+        ctx.fillRect(0, 0, c.width, c.height);
+        ctx.scale(SCALE, SCALE);
         ctx.drawImage(img, 0, 0);
-        triggerDownload(canvas.toDataURL("image/png"), "parser_rag_flow.png");
+        c.toBlob(blob => download(blob, "parser_rag_flow.png"), "image/png");
       };
-      img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgStr);
+      img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(str);
     });
 
     document.getElementById("btn-html").addEventListener("click", () => {
-      const blob = new Blob([document.documentElement.outerHTML], { type: "text/html;charset=utf-8" });
-      triggerDownload(URL.createObjectURL(blob), "parser_rag_flow.html");
+      download(new Blob([document.documentElement.outerHTML], { type: "text/html" }), "parser_rag_flow.html");
     });
 
-    function triggerDownload(href, filename) {
+    function download(blob, name) {
       const a = document.createElement("a");
-      a.href = href;
-      a.download = filename;
-      document.body.appendChild(a);
+      a.href = URL.createObjectURL(blob);
+      a.download = name;
       a.click();
-      document.body.removeChild(a);
     }
   </script>
 </body>
