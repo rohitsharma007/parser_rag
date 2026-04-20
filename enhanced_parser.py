@@ -63,8 +63,8 @@ class EnhancedMethodInfo:
     selenium_actions: list[str] = field(default_factory=list)
     # new ClassName() expressions found inside this method
     object_creations: list[str] = field(default_factory=list)
-    # (receiver_variable, method_name) pairs – best-effort, simple calls only
-    method_calls: list[tuple[str, str]] = field(default_factory=list)
+    # Structured call records: {object, method, full_call, arguments}
+    method_calls: list[dict] = field(default_factory=list)
 
 
 @dataclass
@@ -377,33 +377,66 @@ class EnhancedJavaParser(JavaSeleniumParser):
     # Method call extraction
     # ------------------------------------------------------------------
 
-    def _extract_method_calls(
-        self, node, source: bytes
-    ) -> list[tuple[str, str]]:
+    def _extract_method_calls(self, node, source: bytes) -> list[dict]:
         """
-        Best-effort extraction of (receiver, method) pairs from simple
-        method invocations: loginPage.enterUsername(...)  →  ("loginPage", "enterUsername")
+        Extract structured call records from simple method invocations.
 
-        Chained and complex expressions are skipped to avoid noise.
+        loginPage.enterUsername("admin")  →
+            {
+              "object":    "loginPage",
+              "method":    "enterUsername",
+              "full_call": "loginPage.enterUsername",
+              "arguments": ['"admin"']
+            }
+
+        Chained receivers (foo.bar().baz()) are skipped to avoid noise; only
+        calls where the receiver is a plain identifier are captured.
         """
-        found: list[tuple[str, str]] = []
+        found: list[dict] = []
         self._walk_method_calls(node, source, found)
-        # Deduplicate
-        seen: set[tuple[str, str]] = set()
-        return [x for x in found if not (x in seen or seen.add(x))]  # type: ignore[func-returns-value]
+        # Deduplicate by (full_call, arguments) fingerprint
+        seen: set[str] = set()
+        deduped: list[dict] = []
+        for call in found:
+            key = f"{call['full_call']}({','.join(call['arguments'])})"
+            if key not in seen:
+                seen.add(key)
+                deduped.append(call)
+        return deduped
 
-    def _walk_method_calls(
-        self, node, source: bytes, found: list[tuple[str, str]]
-    ) -> None:
+    def _walk_method_calls(self, node, source: bytes, found: list[dict]) -> None:
         if node.type == "method_invocation":
             obj_node  = node.child_by_field_name("object")
             name_node = node.child_by_field_name("name")
             if obj_node and name_node and obj_node.type == "identifier":
-                receiver = self._node_text(obj_node, source).strip()
-                method   = self._node_text(name_node, source).strip()
-                found.append((receiver, method))
+                receiver  = self._node_text(obj_node, source).strip()
+                method    = self._node_text(name_node, source).strip()
+                arguments = self._extract_argument_list(node, source)
+                found.append({
+                    "object":    receiver,
+                    "method":    method,
+                    "full_call": f"{receiver}.{method}",
+                    "arguments": arguments,
+                })
         for child in node.children:
             self._walk_method_calls(child, source, found)
+
+    def _extract_argument_list(self, invocation_node, source: bytes) -> list[str]:
+        """
+        Extract the textual arguments from a method_invocation's argument_list.
+
+        RestAssuredAPI.setDefaultHeader("Authorization", token)
+          →  ['"Authorization"', 'token']
+        """
+        args: list[str] = []
+        arg_list = invocation_node.child_by_field_name("arguments")
+        if arg_list is None:
+            return args
+        for child in arg_list.children:
+            # Skip punctuation; keep all expression nodes
+            if child.type not in ("(", ")", ","):
+                args.append(self._node_text(child, source).strip())
+        return args
 
     # ------------------------------------------------------------------
     # Shared helper

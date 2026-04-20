@@ -224,10 +224,23 @@ class ChunkBuilder:
                 header_lines.append(
                     f"Selenium actions: {', '.join(method.selenium_actions)}"
                 )
+            # Include each call with its actual arguments so the embedding
+            # captures WHAT was called and WITH WHAT VALUES (not just a label).
+            if method.method_calls:
+                call_strs = [
+                    f"{c['full_call']}({', '.join(c['arguments'])})"
+                    for c in method.method_calls
+                ]
+                header_lines.append(f"Method calls: {'; '.join(call_strs)}")
 
+            # Raw code is always preserved — never replaced with a summary.
             content = "\n".join(header_lines) + "\n\n" + method.code
 
             # ── Metadata ─────────────────────────────────────────────
+            # method_calls is now a list of structured dicts:
+            #   {object, method, full_call, arguments}
+            # This gives downstream consumers both human-readable and
+            # machine-parseable call detail without losing argument values.
             metadata: dict = {
                 "chunk_type":       "method",
                 "layer":            cls.layer,
@@ -237,11 +250,8 @@ class ChunkBuilder:
                 "annotations":      method.annotations,
                 "selenium_actions": method.selenium_actions,
                 "object_creations": method.object_creations,
-                "method_calls": [
-                    f"{obj}.{meth}"
-                    for obj, meth in method.method_calls
-                ],
-                "comments": method.comments,
+                "method_calls":     method.method_calls,
+                "comments":         method.comments,
             }
 
             chunks.append(Chunk(
