@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parser RAG — Repository Flow Diagram</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 16px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+      color: #f8fafc;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-bottom: 28px;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+    button:hover  { opacity: 0.85; }
+    button:active { transform: scale(0.97); }
+
+    #btn-svg { background: #6366f1; color: #fff; }
+    #btn-png { background: #10b981; color: #fff; }
+    #btn-html { background: #f59e0b; color: #000; }
+
+    .diagram-wrapper {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 32px 40px;
+      max-width: 1400px;
+      width: 100%;
+      overflow-x: auto;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    }
+
+    #diagram {
+      display: flex;
+      justify-content: center;
+    }
+
+    .legend {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      font-size: 0.78rem;
+      color: #64748b;
+    }
+    .legend-item { display: flex; align-items: center; gap: 6px; }
+    .legend-dot {
+      width: 12px; height: 12px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Parser RAG — Repository Processing Flow</h1>
+  <p class="subtitle">Two-pass AST pipeline: Symbol Discovery → Full Analysis → Vector Chunks</p>
+
+  <div class="btn-row">
+    <button id="btn-svg">⬇ Download SVG</button>
+    <button id="btn-png">⬇ Download PNG</button>
+    <button id="btn-html">⬇ Download HTML</button>
+  </div>
+
+  <div class="diagram-wrapper">
+    <div id="diagram">
+      <div class="mermaid">
+flowchart LR
+    subgraph INPUT["📁 Java Repository Input"]
+        direction TB
+        subgraph L1["① TestCases Layer"]
+            T1["🧪 TestNG / JUnit Classes\n• @Test, @BeforeClass, @AfterClass\n• @DataProvider, @Suite\n• Test methods"]
+        end
+        subgraph L2["② Pages Layer (UI)"]
+            T2["🖥️ Page Object Classes\n• Selenium: findElement()\n• click(), sendKeys()\n• getCurrentUrl(), getTitle()"]
+        end
+        subgraph L3["③ Business Functions Layer"]
+            T3["⚙️ Service / Utility Classes\n• WebPage.java\n• Helper & base classes\n• Business logic methods"]
+        end
+    end
+
+    subgraph P1["🔵 PASS 1 — Fast Symbol Discovery"]
+        RS["📂 RepoScanner\n──────────────\n• Walks all .java files\n• Assigns semantic layer\n  (test / ui / service /\n   api / page / utility)\n• Sorted deterministic output"]
+        EP1["⚡ Enhanced Parser · Fast Mode\n──────────────\n• Package declarations\n• Class names\n• Method signatures\n• Test annotations\n• Import statements"]
+        ST[("🗂️ Symbol Table\n──────────────\n• FQN → ClassSymbol map\n• SimpleName → candidates\n• Ambiguity resolution\n  via import context\n• O(1) cross-file lookup")]
+    end
+
+    subgraph P2["🟣 PASS 2 — Full AST + Relationship Analysis"]
+        EP2["🔍 Enhanced Parser · Full AST\n──────────────\n• Field declarations + types\n• Superclass (extends)\n• Interfaces (implements)\n• Object instantiations\n• Method call pairs\n• Selenium action detection\n• Block & line comments"]
+        RE["🔗 Relationship Extractor\n──────────────\n• EXTENDS\n• IMPLEMENTS\n• USES_STRONG (constructor)\n• USES_WEAK (method call)\n• Filters noise classes\n  (String, WebDriver, etc.)\n• Marks external deps"]
+        CB["📦 Chunk Builder\n──────────────\nClass Chunks:\n• Identity + structure\n• Dependency surface\n• No method bodies\n\nMethod Chunks:\n• Full source + context\n• SHA-256 chunk IDs\n• Metadata: layer,\n  annotations, actions,\n  field types, relations"]
+    end
+
+    subgraph OUT["🟢 Outputs"]
+        direction TB
+        O1["① Repository Parse Result\nAll classes + methods + full AST"]
+        O2["② Vector Embedding Chunks\nPGVector-ready with metadata"]
+        O3["③ Relationship Graph\nPostgreSQL · Neo4j compatible"]
+        O4["④ Errors & Warnings\nParse failures · ambiguous\nsymbols · encoding issues"]
+    end
+
+    subgraph API["🌐 REST API (FastAPI)"]
+        A1["POST /parse/repo\nGET  /health\nSwagger UI at /docs"]
+    end
+
+    INPUT --> RS
+    RS --> EP1
+    EP1 --> ST
+
+    ST -. "SymbolTable\nfed into Pass 2" .-> EP2
+    ST -. "FQN resolution\nfor cross-file refs" .-> RE
+
+    L1 --> EP2
+    L2 --> EP2
+    L3 --> EP2
+
+    EP2 --> RE
+    RE --> CB
+
+    CB --> O1
+    CB --> O2
+    RE --> O3
+    EP1 -. "bad files" .-> O4
+    EP2 -. "parse errors" .-> O4
+
+    O1 --> API
+    O2 --> API
+    O4 --> API
+
+    style P1 fill:#dbeafe,stroke:#3b82f6,color:#1e3a5f
+    style P2 fill:#ede9fe,stroke:#7c3aed,color:#2e1065
+    style INPUT fill:#fef9c3,stroke:#ca8a04,color:#422006
+    style OUT fill:#dcfce7,stroke:#16a34a,color:#052e16
+    style API fill:#fee2e2,stroke:#dc2626,color:#450a0a
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#ca8a04"></div> Input Layers</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#3b82f6"></div> Pass 1: Symbol Discovery</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#7c3aed"></div> Pass 2: Full AST Analysis</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#16a34a"></div> Outputs</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#dc2626"></div> REST API</div>
+      <div class="legend-item" style="color:#94a3b8">╌╌▶ dotted = error / data feed paths</div>
+    </div>
+  </div>
+
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "default",
+      flowchart: { useMaxWidth: false, htmlLabels: true, curve: "basis" },
+      securityLevel: "loose"
+    });
+
+    function getSvgElement() {
+      return document.querySelector("#diagram svg");
+    }
+
+    document.getElementById("btn-svg").addEventListener("click", () => {
+      const svg = getSvgElement();
+      if (!svg) return alert("Diagram not ready yet, please wait.");
+      const serializer = new XMLSerializer();
+      const svgStr = serializer.serializeToString(svg);
+      const blob = new Blob([svgStr], { type: "image/svg+xml;charset=utf-8" });
+      triggerDownload(URL.createObjectURL(blob), "parser_rag_flow.svg");
+    });
+
+    document.getElementById("btn-png").addEventListener("click", () => {
+      const svg = getSvgElement();
+      if (!svg) return alert("Diagram not ready yet, please wait.");
+
+      const svgEl = svg.cloneNode(true);
+      const bbox = svg.getBoundingClientRect();
+      const scale = 2;
+      const w = bbox.width  || 1200;
+      const h = bbox.height || 800;
+
+      svgEl.setAttribute("width",  w);
+      svgEl.setAttribute("height", h);
+      svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+
+      const svgStr = new XMLSerializer().serializeToString(svgEl);
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        canvas.width  = w * scale;
+        canvas.height = h * scale;
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.scale(scale, scale);
+        ctx.drawImage(img, 0, 0);
+        triggerDownload(canvas.toDataURL("image/png"), "parser_rag_flow.png");
+      };
+      img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgStr);
+    });
+
+    document.getElementById("btn-html").addEventListener("click", () => {
+      const blob = new Blob([document.documentElement.outerHTML], { type: "text/html;charset=utf-8" });
+      triggerDownload(URL.createObjectURL(blob), "parser_rag_flow.html");
+    });
+
+    function triggerDownload(href, filename) {
+      const a = document.createElement("a");
+      a.href = href;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+  </script>
+</body>
+</html>
