@@ -1,0 +1,8 @@
+"id","type","title","state","areaPath","description","acceptanceCriteria","parentId","url"
+"US-007","User Story","Azure Cloud Deployment and SaaS Configuration","Active","ATR Portal\Cloud Integration","As a cloud operator,
+I want to configure Azure deployments and manage ADU SaaS instances,
+So that I can provision and monitor cloud resources from within the portal.","✓ TC-050: Configure Azure deployment via UI + ADU SaaS API  ← TC-416C3A67
+✓ TC-051: Core reference data API returns valid region list  ← TC-B912BDA3
+✓ TC-052: Provision ADU SaaS instance via API and check status  ← TC-33F2938C
+✓ TC-053: Update SaaS configuration via API  ← TC-7E0D4649
+✓ TC-054: Azure_Cloud_Page verifyAduSaasStatus delegates to API  ← TC-1B8ADCF1","",""
