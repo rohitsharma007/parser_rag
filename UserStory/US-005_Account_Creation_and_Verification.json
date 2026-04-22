@@ -1,0 +1,20 @@
+{
+  "id": "US-005",
+  "type": "User Story",
+  "title": "Account Creation and Verification",
+  "state": "Active",
+  "area_path": "ATR Portal\\Application Management",
+  "description": "As a account administrator,\nI want to create and verify accounts via API and the UI,\nSo that I can manage account lifecycle end-to-end within the portal.",
+  "acceptance_criteria": [
+    "✓ TC-010: Create account via API and verify in UI  ← TC-18965002",
+    "✓ TC-011: Full account creation and verification via BusinessFunctions  ← TC-C0557BB5",
+    "✓ TC-014: Get account details from API and assert key fields  ← TC-B6446116"
+  ],
+  "linked_tc_ids": [
+    "TC-18965002",
+    "TC-C0557BB5",
+    "TC-B6446116"
+  ],
+  "parent_id": "",
+  "url": ""
+}

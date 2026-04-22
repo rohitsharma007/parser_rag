@@ -1,0 +1,51 @@
+"id","type","title","state","areaPath","description","acceptanceCriteria","parentId","url"
+"US-001","User Story","Secure Login to ATR Portal","Active","ATR Portal\Authentication","As a registered user,
+I want to authenticate to the ATR Portal with my credentials,
+So that I can access my account and the portal features securely.","✓ TC-040: Retry on flaky login flow  ← TC-1B3B94F5
+✓ TC-030: POC login page — enter credentials and submit  ← TC-B31E6E3F
+✓ TC-031: POC — Register new user via BusinessFunctions  ← TC-8FB69374
+✓ TC-001: Login and navigate to dashboard via BusinessFunctions  ← TC-16BE13E3
+✓ TC-002: Direct Login_Page and Navigation_Page interaction  ← TC-64DD42DA
+✓ TC-004: Invalid credentials show login error  ← TC-73C0D53C","",""
+"US-002","User Story","New User Self-Registration","Active","ATR Portal\User Management","As a new user,
+I want to register an account on the ATR Portal,
+So that I can gain access to portal services without administrator intervention.","✓ TC-033: POC — Direct RegisterUser_Page interaction  ← TC-0A893F1A","",""
+"US-003","User Story","Portal Home Page Overview","Active","ATR Portal\User Management","As a logged-in user,
+I want to see a personalised home page with quick-access links after login,
+So that I can navigate to key portal areas efficiently.","✓ TC-032: POC — Home page welcome and quick links visible  ← TC-09DF4433
+✓ TC-003: Certificate SSO login and home page verification  ← TC-ABB92EAB","",""
+"US-004","User Story","Portal Menu and Navigation","Active","ATR Portal\Navigation","As a portal user,
+I want to navigate between portal sections via the menu,
+So that I can quickly reach any area of the application.","✓ TC-041: Retry on flaky navigation flow  ← TC-12AD5678
+✓ TC-020: Menu navigation to Dashboard  ← TC-DBD8F1A2
+✓ TC-021: All expected menu items are visible  ← TC-C0E7EA80
+✓ Navigate Via Business Functions  ← TC-91BEEBC0
+✓ TC-023: Menu search filters items  ← TC-E1D771B1
+✓ TC-024: Navigate to Settings via Navigation_Page  ← TC-6A3054F9
+✓ Menu Item Availability  ← TC-14DED73A","",""
+"US-005","User Story","Account Creation and Verification","Active","ATR Portal\Application Management","As a account administrator,
+I want to create and verify accounts via API and the UI,
+So that I can manage account lifecycle end-to-end within the portal.","✓ TC-010: Create account via API and verify in UI  ← TC-18965002
+✓ TC-011: Full account creation and verification via BusinessFunctions  ← TC-C0557BB5
+✓ TC-014: Get account details from API and assert key fields  ← TC-B6446116","",""
+"US-006","User Story","Application Grid and Provisioning","Active","ATR Portal\Application Management","As a application administrator,
+I want to create and manage applications through the ATR Application page,
+So that I can keep the application inventory accurate and up to date.","✓ TC-012: Application grid loads correctly  ← TC-9320E83F
+✓ TC-013: Create application via UI and verify in grid  ← TC-F0E32A0F","",""
+"US-007","User Story","Azure Cloud Deployment and SaaS Configuration","Active","ATR Portal\Cloud Integration","As a cloud operator,
+I want to configure Azure deployments and manage ADU SaaS instances,
+So that I can provision and monitor cloud resources from within the portal.","✓ TC-050: Configure Azure deployment via UI + ADU SaaS API  ← TC-416C3A67
+✓ TC-051: Core reference data API returns valid region list  ← TC-B912BDA3
+✓ TC-052: Provision ADU SaaS instance via API and check status  ← TC-33F2938C
+✓ TC-053: Update SaaS configuration via API  ← TC-7E0D4649
+✓ TC-054: Azure_Cloud_Page verifyAduSaasStatus delegates to API  ← TC-1B8ADCF1","",""
+"US-008","User Story","Financial Calculator Accessibility","Active","ATR Portal\Financial Services","As a financial analyst,
+I want to use interest and other financial calculators in the portal,
+So that I can perform accurate financial computations without leaving the platform.","✓ TC-055: Bonus — Financial calculator via FinancialCalculators_Perfecto_Page  ← TC-4A0432D0","",""
+"US-009","User Story","Headless Browser Login via Playwright","Active","ATR Portal\Test Infrastructure","As a QA engineer,
+I want to run portal login flows using the Playwright automation framework,
+So that I can validate portal behaviour in a fast, headless browser environment.","✓ TC-034: POC — Playwright login flow  ← TC-5664F942","",""
+"US-010","User Story","Flaky Test Retry and Recovery","Active","ATR Portal\Test Infrastructure","As a QA engineer,
+I want to have intermittent test failures retried automatically,
+So that I can reduce false-negative results and maintain pipeline stability.","✓ TC-042: BusinessFunctions login+navigate with retry  ← TC-BA68EAFC
+✓ TC-043: Verify RetryAnalyzer max retry count  ← TC-F831285B","",""

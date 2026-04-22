@@ -1,0 +1,1019 @@
+[
+  {
+    "tc_id": "TC-18965002",
+    "title": "TC-010: Create account via API and verify in UI",
+    "method_name": "testCreateAccountViaAPI",
+    "class_name": "ATR_Application_Regression_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "regression",
+      "accounts"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Application Management",
+    "priority": 2,
+    "linked_us_id": "US-005",
+    "page_objects_used": [
+      "Accounts_Page",
+      "MyAccount_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Accounts_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Create Account [accountName, \"ENTERPRISE\"] via accountsApi",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Initialize MyAccount_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 4,
+        "action": "Verify Account [accountName] via myAccountPage",
+        "expected_result": "Account ID should not be null"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-C0557BB5",
+    "title": "TC-011: Full account creation and verification via BusinessFunctions",
+    "method_name": "testFullApplicationFlow",
+    "class_name": "ATR_Application_Regression_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "regression",
+      "accounts"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Application Management",
+    "priority": 2,
+    "linked_us_id": "US-005",
+    "page_objects_used": [],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Test",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Create And Verify Account [\"EnterpriseAccount-001\", \"ENTERPRISE\"] via businessFunctions",
+        "expected_result": ""
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-9320E83F",
+    "title": "TC-012: Application grid loads correctly",
+    "method_name": "testApplicationGridLoad",
+    "class_name": "ATR_Application_Regression_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "regression",
+      "ui"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Application Management",
+    "priority": 2,
+    "linked_us_id": "US-006",
+    "page_objects_used": [
+      "ATR_Application_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize ATR_Application_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Get Application Count on appPage",
+        "expected_result": "Application grid count should be non-negative"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-F0E32A0F",
+    "title": "TC-013: Create application via UI and verify in grid",
+    "method_name": "testCreateApplicationThroughUI",
+    "class_name": "ATR_Application_Regression_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "regression",
+      "accounts"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Application Management",
+    "priority": 2,
+    "linked_us_id": "US-006",
+    "page_objects_used": [
+      "ATR_Application_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize ATR_Application_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Create Application [appName, accountName] via appPage",
+        "expected_result": ""
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-B6446116",
+    "title": "TC-014: Get account details from API and assert key fields",
+    "method_name": "testGetAccountDetailsFromAPI",
+    "class_name": "ATR_Application_Regression_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "regression",
+      "api"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Application Management",
+    "priority": 2,
+    "linked_us_id": "US-005",
+    "page_objects_used": [
+      "Accounts_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Accounts_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Create Account [\"DetailCheckAccount\", \"STANDARD\"] via accountsApi",
+        "expected_result": "Account details map should not be null; Account details should include 'status'; Newly created account should be ACTIVE"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-1B3B94F5",
+    "title": "TC-040: Retry on flaky login flow",
+    "method_name": "testLoginWithRetry",
+    "class_name": "ATR_Portal_POC_Retry_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "retry",
+      "login"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Reliability",
+    "priority": 1,
+    "linked_us_id": "US-001",
+    "page_objects_used": [
+      "Login_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Login_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Enter Username [\"retry.user@atrportal.com\"] via loginPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Enter Password [\"Retry@1234\"] via loginPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 4,
+        "action": "Click Login on loginPage",
+        "expected_result": "No error should be shown on successful login attempt"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-12AD5678",
+    "title": "TC-041: Retry on flaky navigation flow",
+    "method_name": "testNavigationWithRetry",
+    "class_name": "ATR_Portal_POC_Retry_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "retry",
+      "navigation"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Reliability",
+    "priority": 2,
+    "linked_us_id": "US-004",
+    "page_objects_used": [
+      "Navigation_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Navigation_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Go To Dashboard on navPage",
+        "expected_result": ""
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-BA68EAFC",
+    "title": "TC-042: BusinessFunctions login+navigate with retry",
+    "method_name": "testBusinessFunctionLoginWithRetry",
+    "class_name": "ATR_Portal_POC_Retry_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "retry",
+      "regression"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Reliability",
+    "priority": 2,
+    "linked_us_id": "US-010",
+    "page_objects_used": [],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Test",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Login And Navigate [\"retry.bf.user@atrportal.com\", \"BF@Retry1\"] via businessFunctions",
+        "expected_result": ""
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-F831285B",
+    "title": "TC-043: Verify RetryAnalyzer max retry count",
+    "method_name": "testRetryAnalyzerConfiguration",
+    "class_name": "ATR_Portal_POC_Retry_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "utility"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Reliability",
+    "priority": 3,
+    "linked_us_id": "US-010",
+    "page_objects_used": [],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Get Max Retry Count on RetryAnalyzer",
+        "expected_result": "RetryAnalyzer should be configured for 3 max retries"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-B31E6E3F",
+    "title": "TC-030: POC login page — enter credentials and submit",
+    "method_name": "testPortalLoginPOC",
+    "class_name": "ATR_Portal_POC_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "poc",
+      "login"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\POC",
+    "priority": 1,
+    "linked_us_id": "US-001",
+    "page_objects_used": [
+      "Login_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Login_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Enter Username [\"poc.user@atrportal.com\"] via loginPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Enter Password [\"POC@pass123\"] via loginPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 4,
+        "action": "Click Login on loginPage",
+        "expected_result": "URL should be present after login"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-8FB69374",
+    "title": "TC-031: POC — Register new user via BusinessFunctions",
+    "method_name": "testRegisterNewUserPOC",
+    "class_name": "ATR_Portal_POC_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "poc",
+      "registration"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\POC",
+    "priority": 2,
+    "linked_us_id": "US-001",
+    "page_objects_used": [],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Test",
+        "expected_result": ""
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-09DF4433",
+    "title": "TC-032: POC — Home page welcome and quick links visible",
+    "method_name": "testHomePagePOC",
+    "class_name": "ATR_Portal_POC_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "poc",
+      "homepage"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\POC",
+    "priority": 2,
+    "linked_us_id": "US-003",
+    "page_objects_used": [
+      "ATR_HomePage"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize ATR_HomePage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Get User Greeting on homePage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Is Quick Links Section Visible on homePage",
+        "expected_result": ""
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-0A893F1A",
+    "title": "TC-033: POC — Direct RegisterUser_Page interaction",
+    "method_name": "testDirectRegistrationPagePOC",
+    "class_name": "ATR_Portal_POC_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "poc",
+      "registration"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\POC",
+    "priority": 2,
+    "linked_us_id": "US-002",
+    "page_objects_used": [
+      "RegisterUser_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Navigate to BASE_URL + \"/register",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Initialize RegisterUser_Page",
+        "expected_result": ""
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-5664F942",
+    "title": "TC-034: POC — Playwright login flow",
+    "method_name": "testPlaywrightLoginPOC",
+    "class_name": "ATR_Portal_POC_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "poc",
+      "playwright"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\POC",
+    "priority": 3,
+    "linked_us_id": "US-009",
+    "page_objects_used": [
+      "ATR_Portal_Playwright_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize ATR_Portal_Playwright_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Open Portal on playwrightPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Login With Playwright [\"playwright.user@atrportal.com\", \"PW@Test1234\"] via playwrightPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 4,
+        "action": "Is Logged In on playwrightPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 5,
+        "action": "Close on playwrightPage",
+        "expected_result": "Page title should be present"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-16BE13E3",
+    "title": "TC-001: Login and navigate to dashboard via BusinessFunctions",
+    "method_name": "testLoginFlow",
+    "class_name": "ATR_Portal_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "smoke",
+      "login"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Authentication",
+    "priority": 1,
+    "linked_us_id": "US-001",
+    "page_objects_used": [],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Test",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Login And Navigate [\"testuser@atrportal.com\", \"Test@1234\"] via businessFunctions",
+        "expected_result": "Should be on dashboard after login"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-64DD42DA",
+    "title": "TC-002: Direct Login_Page and Navigation_Page interaction",
+    "method_name": "testDirectLoginPage",
+    "class_name": "ATR_Portal_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "smoke",
+      "login"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Authentication",
+    "priority": 1,
+    "linked_us_id": "US-001",
+    "page_objects_used": [
+      "Login_Page",
+      "Navigation_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Login_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Enter Username [\"admin@atrportal.com\"] via loginPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Enter Password [\"Admin@1234\"] via loginPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 4,
+        "action": "Click Login on loginPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 5,
+        "action": "Initialize Navigation_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 6,
+        "action": "Go To Dashboard on nav",
+        "expected_result": "No login error should be shown for valid credentials"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-ABB92EAB",
+    "title": "TC-003: Certificate SSO login and home page verification",
+    "method_name": "testHomePageAfterLogin",
+    "class_name": "ATR_Portal_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "regression",
+      "login"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Authentication",
+    "priority": 1,
+    "linked_us_id": "US-003",
+    "page_objects_used": [
+      "ATR_HomePage"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Test",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Login With Certificate [\"ssouser@atrportal.com\"] via businessFunctions",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Initialize ATR_HomePage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 4,
+        "action": "Get Welcome Message on homePage",
+        "expected_result": "Welcome message should be present after login; Quick links section should be visible on home page"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-73C0D53C",
+    "title": "TC-004: Invalid credentials show login error",
+    "method_name": "testLoginWithInvalidCredentials",
+    "class_name": "ATR_Portal_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "regression",
+      "negative"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Authentication",
+    "priority": 2,
+    "linked_us_id": "US-001",
+    "page_objects_used": [
+      "Login_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Login_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Enter Username [\"invalid@atrportal.com\"] via loginPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Enter Password [\"WrongPassword!\"] via loginPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 4,
+        "action": "Click Login on loginPage",
+        "expected_result": "Login error message should be displayed for invalid credentials"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-DBD8F1A2",
+    "title": "TC-020: Menu navigation to Dashboard",
+    "method_name": "testMenuNavigationToDashboard",
+    "class_name": "ATR_Web_Portal_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "smoke",
+      "navigation"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Navigation",
+    "priority": 1,
+    "linked_us_id": "US-004",
+    "page_objects_used": [
+      "Menu_Page",
+      "Navigation_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Menu_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Open Menu on menuPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Click Menu Item [\"Dashboard\"] via menuPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 4,
+        "action": "Initialize Navigation_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 5,
+        "action": "Verify Current Page [\"Dashboard\"] via navPage",
+        "expected_result": "URL should reflect Dashboard navigation"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-C0E7EA80",
+    "title": "TC-021: All expected menu items are visible",
+    "method_name": "testMenuItemVisibility",
+    "class_name": "ATR_Web_Portal_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "regression",
+      "navigation"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Navigation",
+    "priority": 2,
+    "linked_us_id": "US-004",
+    "page_objects_used": [
+      "Menu_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Menu_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Open Menu on menuPage",
+        "expected_result": "Dashboard menu item should be visible; Reports menu item should be visible"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-91BEEBC0",
+    "title": "Navigate Via Business Functions",
+    "method_name": "testNavigateViaBusinessFunctions",
+    "class_name": "ATR_Web_Portal_Tests",
+    "assigned_to": "QA Team",
+    "tags": [],
+    "state": "Design",
+    "area_path": "ATR Portal\\Navigation",
+    "priority": 3,
+    "linked_us_id": "US-004",
+    "page_objects_used": [],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Test",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Navigate Via Menu [\"Reports\"] via businessFunctions",
+        "expected_result": ""
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-E1D771B1",
+    "title": "TC-023: Menu search filters items",
+    "method_name": "testMenuSearch",
+    "class_name": "ATR_Web_Portal_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "regression",
+      "navigation"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Navigation",
+    "priority": 2,
+    "linked_us_id": "US-004",
+    "page_objects_used": [
+      "Menu_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Menu_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Open Menu on menuPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Search Menu [\"Report\"] via menuPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 4,
+        "action": "Get All Menu Items on menuPage",
+        "expected_result": "Menu items list should not be null"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-6A3054F9",
+    "title": "TC-024: Navigate to Settings via Navigation_Page",
+    "method_name": "testNavigateToSettings",
+    "class_name": "ATR_Web_Portal_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "regression",
+      "navigation"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Navigation",
+    "priority": 2,
+    "linked_us_id": "US-004",
+    "page_objects_used": [
+      "Navigation_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Navigation_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Go To Settings on navPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Verify Current Page [\"Settings\"] via navPage",
+        "expected_result": ""
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-14DED73A",
+    "title": "Menu Item Availability",
+    "method_name": "testMenuItemAvailability",
+    "class_name": "ATR_Web_Portal_Tests",
+    "assigned_to": "QA Team",
+    "tags": [],
+    "state": "Design",
+    "area_path": "ATR Portal\\Navigation",
+    "priority": 3,
+    "linked_us_id": "US-004",
+    "page_objects_used": [],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Test",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Is Menu Item Available [\"Dashboard\"] via businessFunctions",
+        "expected_result": ""
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-416C3A67",
+    "title": "TC-050: Configure Azure deployment via UI + ADU SaaS API",
+    "method_name": "testAzureDeploymentConfig",
+    "class_name": "Azure_Public_Cloud_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "cloud",
+      "regression"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Cloud Integration",
+    "priority": 2,
+    "linked_us_id": "US-007",
+    "page_objects_used": [
+      "Azure_Cloud_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Azure_Cloud_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Enter Resource Group [\"rg-automation-test\"] via azurePage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Select Region [\"US-EAST\"] via azurePage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 4,
+        "action": "Configure Azure Deployment [tenantId, subscriptionId] via azurePage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 5,
+        "action": "Get Deployment Status on azurePage",
+        "expected_result": "Deployment status should be returned"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-B912BDA3",
+    "title": "TC-051: Core reference data API returns valid region list",
+    "method_name": "testCoreReferenceData",
+    "class_name": "Azure_Public_Cloud_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "cloud",
+      "api"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Cloud Integration",
+    "priority": 2,
+    "linked_us_id": "US-007",
+    "page_objects_used": [
+      "Core_Reference_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Core_Reference_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Get Reference Data [\"REGIONS\"] via coreRefPage",
+        "expected_result": "Regions list should not be null; Regions list should not be empty"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-33F2938C",
+    "title": "TC-052: Provision ADU SaaS instance via API and check status",
+    "method_name": "testAduSaasProvisioning",
+    "class_name": "Azure_Public_Cloud_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "cloud",
+      "api"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Cloud Integration",
+    "priority": 2,
+    "linked_us_id": "US-007",
+    "page_objects_used": [
+      "Adu_Saas_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Adu_Saas_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Provision Adu Saas Instance [\"cloud-tenant-001\", \"ENTERPRISE\"] via aduSaasPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Get Saas Status [instanceId] via aduSaasPage",
+        "expected_result": "Instance ID should not be null after provisioning; Newly provisioned instance should be RUNNING"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-7E0D4649",
+    "title": "TC-053: Update SaaS configuration via API",
+    "method_name": "testUpdateSaasConfiguration",
+    "class_name": "Azure_Public_Cloud_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "cloud",
+      "api"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Cloud Integration",
+    "priority": 2,
+    "linked_us_id": "US-007",
+    "page_objects_used": [
+      "Adu_Saas_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Adu_Saas_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Provision Adu Saas Instance [\"config-tenant-002\", \"PREMIUM\"] via aduSaasPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Update Saas Configuration [instanceId, \"maxConnections\", \"100\"] via aduSaasPage",
+        "expected_result": "Configuration update should return true"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-1B8ADCF1",
+    "title": "TC-054: Azure_Cloud_Page verifyAduSaasStatus delegates to API",
+    "method_name": "testAzurePageSaasStatusCheck",
+    "class_name": "Azure_Public_Cloud_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "cloud",
+      "regression"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Cloud Integration",
+    "priority": 2,
+    "linked_us_id": "US-007",
+    "page_objects_used": [
+      "Azure_Cloud_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Azure_Cloud_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Verify Adu Saas Status [\"instance-check-001\"] via azurePage",
+        "expected_result": "Status should not be null"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-4A0432D0",
+    "title": "TC-055: Bonus — Financial calculator via FinancialCalculators_Perfecto_Page",
+    "method_name": "testFinancialCalculatorPerfecto",
+    "class_name": "Azure_Public_Cloud_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "cloud",
+      "perfecto"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Cloud Integration",
+    "priority": 2,
+    "linked_us_id": "US-008",
+    "page_objects_used": [
+      "FinancialCalculators_Perfecto_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize FinancialCalculators_Perfecto_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Calculate Interest [10000.0, 5.5, 3] via calcPage",
+        "expected_result": "Interest result should be a non-negative number"
+      }
+    ]
+  }
+]

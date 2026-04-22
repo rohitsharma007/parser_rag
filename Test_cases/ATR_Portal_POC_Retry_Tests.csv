@@ -1,0 +1,12 @@
+"TC_ID","Title","AssignedTo","Tags","State","AreaPath","Priority","LinkedUserStory","PageObjectsUsed","Steps"
+"TC-1B3B94F5","TC-040: Retry on flaky login flow","QA Team","retry, login","Design","ATR Portal\Reliability","1","US-001","Login_Page","1. Initialize Login_Page
+2. Enter Username [""retry.user@atrportal.com""] via loginPage
+3. Enter Password [""Retry@1234""] via loginPage
+4. Click Login on loginPage
+   → Expected: No error should be shown on successful login attempt"
+"TC-12AD5678","TC-041: Retry on flaky navigation flow","QA Team","retry, navigation","Design","ATR Portal\Reliability","2","US-004","Navigation_Page","1. Initialize Navigation_Page
+2. Go To Dashboard on navPage"
+"TC-BA68EAFC","TC-042: BusinessFunctions login+navigate with retry","QA Team","retry, regression","Design","ATR Portal\Reliability","2","US-010","","1. Initialize Test
+2. Login And Navigate [""retry.bf.user@atrportal.com"", ""BF@Retry1""] via businessFunctions"
+"TC-F831285B","TC-043: Verify RetryAnalyzer max retry count","QA Team","utility","Design","ATR Portal\Reliability","3","US-010","","1. Get Max Retry Count on RetryAnalyzer
+   → Expected: RetryAnalyzer should be configured for 3 max retries"

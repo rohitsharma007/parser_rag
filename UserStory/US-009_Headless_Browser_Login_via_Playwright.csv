@@ -1,0 +1,4 @@
+"id","type","title","state","areaPath","description","acceptanceCriteria","parentId","url"
+"US-009","User Story","Headless Browser Login via Playwright","Active","ATR Portal\Test Infrastructure","As a QA engineer,
+I want to run portal login flows using the Playwright automation framework,
+So that I can validate portal behaviour in a fast, headless browser environment.","✓ TC-034: POC — Playwright login flow  ← TC-5664F942","",""

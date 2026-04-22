@@ -1,0 +1,26 @@
+{
+  "id": "US-001",
+  "type": "User Story",
+  "title": "Secure Login to ATR Portal",
+  "state": "Active",
+  "area_path": "ATR Portal\\Authentication",
+  "description": "As a registered user,\nI want to authenticate to the ATR Portal with my credentials,\nSo that I can access my account and the portal features securely.",
+  "acceptance_criteria": [
+    "✓ TC-040: Retry on flaky login flow  ← TC-1B3B94F5",
+    "✓ TC-030: POC login page — enter credentials and submit  ← TC-B31E6E3F",
+    "✓ TC-031: POC — Register new user via BusinessFunctions  ← TC-8FB69374",
+    "✓ TC-001: Login and navigate to dashboard via BusinessFunctions  ← TC-16BE13E3",
+    "✓ TC-002: Direct Login_Page and Navigation_Page interaction  ← TC-64DD42DA",
+    "✓ TC-004: Invalid credentials show login error  ← TC-73C0D53C"
+  ],
+  "linked_tc_ids": [
+    "TC-1B3B94F5",
+    "TC-B31E6E3F",
+    "TC-8FB69374",
+    "TC-16BE13E3",
+    "TC-64DD42DA",
+    "TC-73C0D53C"
+  ],
+  "parent_id": "",
+  "url": ""
+}

@@ -1,0 +1,4 @@
+"id","type","title","state","areaPath","description","acceptanceCriteria","parentId","url"
+"US-002","User Story","New User Self-Registration","Active","ATR Portal\User Management","As a new user,
+I want to register an account on the ATR Portal,
+So that I can gain access to portal services without administrator intervention.","✓ TC-033: POC — Direct RegisterUser_Page interaction  ← TC-0A893F1A","",""

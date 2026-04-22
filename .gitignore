@@ -1,7 +1,16 @@
 __pycache__/
+claude/review-project-a09Yn
 *.py[cod]
+
+*.pyc
+claude/tree-sitter-java-parser-wE2KK
 *.pyo
 .env
 *.egg-info/
 dist/
 build/
+claude/review-project-a09Yn
+
+.pytest_cache/
+.mypy_cache/
+claude/tree-sitter-java-parser-wE2KK

@@ -1,0 +1,18 @@
+{
+  "id": "US-010",
+  "type": "User Story",
+  "title": "Flaky Test Retry and Recovery",
+  "state": "Active",
+  "area_path": "ATR Portal\\Test Infrastructure",
+  "description": "As a QA engineer,\nI want to have intermittent test failures retried automatically,\nSo that I can reduce false-negative results and maintain pipeline stability.",
+  "acceptance_criteria": [
+    "✓ TC-042: BusinessFunctions login+navigate with retry  ← TC-BA68EAFC",
+    "✓ TC-043: Verify RetryAnalyzer max retry count  ← TC-F831285B"
+  ],
+  "linked_tc_ids": [
+    "TC-BA68EAFC",
+    "TC-F831285B"
+  ],
+  "parent_id": "",
+  "url": ""
+}
