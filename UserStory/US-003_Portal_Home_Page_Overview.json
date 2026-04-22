@@ -1,0 +1,18 @@
+{
+  "id": "US-003",
+  "type": "User Story",
+  "title": "Portal Home Page Overview",
+  "state": "Active",
+  "area_path": "ATR Portal\\User Management",
+  "description": "As a logged-in user,\nI want to see a personalised home page with quick-access links after login,\nSo that I can navigate to key portal areas efficiently.",
+  "acceptance_criteria": [
+    "✓ TC-032: POC — Home page welcome and quick links visible  ← TC-09DF4433",
+    "✓ TC-003: Certificate SSO login and home page verification  ← TC-ABB92EAB"
+  ],
+  "linked_tc_ids": [
+    "TC-09DF4433",
+    "TC-ABB92EAB"
+  ],
+  "parent_id": "",
+  "url": ""
+}

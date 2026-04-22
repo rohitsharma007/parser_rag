@@ -1,0 +1,161 @@
+[
+  {
+    "tc_id": "TC-16BE13E3",
+    "title": "TC-001: Login and navigate to dashboard via BusinessFunctions",
+    "method_name": "testLoginFlow",
+    "class_name": "ATR_Portal_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "smoke",
+      "login"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Authentication",
+    "priority": 1,
+    "linked_us_id": "US-001",
+    "page_objects_used": [],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Test",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Login And Navigate [\"testuser@atrportal.com\", \"Test@1234\"] via businessFunctions",
+        "expected_result": "Should be on dashboard after login"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-64DD42DA",
+    "title": "TC-002: Direct Login_Page and Navigation_Page interaction",
+    "method_name": "testDirectLoginPage",
+    "class_name": "ATR_Portal_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "smoke",
+      "login"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Authentication",
+    "priority": 1,
+    "linked_us_id": "US-001",
+    "page_objects_used": [
+      "Login_Page",
+      "Navigation_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Login_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Enter Username [\"admin@atrportal.com\"] via loginPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Enter Password [\"Admin@1234\"] via loginPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 4,
+        "action": "Click Login on loginPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 5,
+        "action": "Initialize Navigation_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 6,
+        "action": "Go To Dashboard on nav",
+        "expected_result": "No login error should be shown for valid credentials"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-ABB92EAB",
+    "title": "TC-003: Certificate SSO login and home page verification",
+    "method_name": "testHomePageAfterLogin",
+    "class_name": "ATR_Portal_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "regression",
+      "login"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Authentication",
+    "priority": 1,
+    "linked_us_id": "US-003",
+    "page_objects_used": [
+      "ATR_HomePage"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Test",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Login With Certificate [\"ssouser@atrportal.com\"] via businessFunctions",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Initialize ATR_HomePage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 4,
+        "action": "Get Welcome Message on homePage",
+        "expected_result": "Welcome message should be present after login; Quick links section should be visible on home page"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-73C0D53C",
+    "title": "TC-004: Invalid credentials show login error",
+    "method_name": "testLoginWithInvalidCredentials",
+    "class_name": "ATR_Portal_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "regression",
+      "negative"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Authentication",
+    "priority": 2,
+    "linked_us_id": "US-001",
+    "page_objects_used": [
+      "Login_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Login_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Enter Username [\"invalid@atrportal.com\"] via loginPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Enter Password [\"WrongPassword!\"] via loginPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 4,
+        "action": "Click Login on loginPage",
+        "expected_result": "Login error message should be displayed for invalid credentials"
+      }
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+"id","type","title","state","areaPath","description","acceptanceCriteria","parentId","url"
+"US-004","User Story","Portal Menu and Navigation","Active","ATR Portal\Navigation","As a portal user,
+I want to navigate between portal sections via the menu,
+So that I can quickly reach any area of the application.","✓ TC-041: Retry on flaky navigation flow  ← TC-12AD5678
+✓ TC-020: Menu navigation to Dashboard  ← TC-DBD8F1A2
+✓ TC-021: All expected menu items are visible  ← TC-C0E7EA80
+✓ Navigate Via Business Functions  ← TC-91BEEBC0
+✓ TC-023: Menu search filters items  ← TC-E1D771B1
+✓ TC-024: Navigate to Settings via Navigation_Page  ← TC-6A3054F9
+✓ Menu Item Availability  ← TC-14DED73A","",""

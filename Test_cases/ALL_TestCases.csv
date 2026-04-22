@@ -1,88 +1,108 @@
-"Title","AssignedTo","Tags","State","AreaPath","Priority","Test Step","Step Action","Expected Result"
-"[TC-18965002] TC-010: Create account via API and verify in UI (US-005)","QA Team","regression, accounts","Design","ATR Portal\Application Management","2","1","Initialize Accounts_Page",""
-"[TC-18965002] TC-010: Create account via API and verify in UI (US-005)","QA Team","regression, accounts","Design","ATR Portal\Application Management","2","2","Create Account [accountName, ""ENTERPRISE""] via accountsApi",""
-"[TC-18965002] TC-010: Create account via API and verify in UI (US-005)","QA Team","regression, accounts","Design","ATR Portal\Application Management","2","3","Initialize MyAccount_Page",""
-"[TC-18965002] TC-010: Create account via API and verify in UI (US-005)","QA Team","regression, accounts","Design","ATR Portal\Application Management","2","4","Verify Account [accountName] via myAccountPage","Account ID should not be null"
-"[TC-C0557BB5] TC-011: Full account creation and verification via BusinessFunctions (US-005)","QA Team","regression, accounts","Design","ATR Portal\Application Management","2","1","Initialize Test",""
-"[TC-C0557BB5] TC-011: Full account creation and verification via BusinessFunctions (US-005)","QA Team","regression, accounts","Design","ATR Portal\Application Management","2","2","Create And Verify Account [""EnterpriseAccount-001"", ""ENTERPRISE""] via businessFunctions",""
-"[TC-9320E83F] TC-012: Application grid loads correctly (US-006)","QA Team","regression, ui","Design","ATR Portal\Application Management","2","1","Initialize ATR_Application_Page",""
-"[TC-9320E83F] TC-012: Application grid loads correctly (US-006)","QA Team","regression, ui","Design","ATR Portal\Application Management","2","2","Get Application Count on appPage","Application grid count should be non-negative"
-"[TC-F0E32A0F] TC-013: Create application via UI and verify in grid (US-006)","QA Team","regression, accounts","Design","ATR Portal\Application Management","2","1","Initialize ATR_Application_Page",""
-"[TC-F0E32A0F] TC-013: Create application via UI and verify in grid (US-006)","QA Team","regression, accounts","Design","ATR Portal\Application Management","2","2","Create Application [appName, accountName] via appPage",""
-"[TC-B6446116] TC-014: Get account details from API and assert key fields (US-005)","QA Team","regression, api","Design","ATR Portal\Application Management","2","1","Initialize Accounts_Page",""
-"[TC-B6446116] TC-014: Get account details from API and assert key fields (US-005)","QA Team","regression, api","Design","ATR Portal\Application Management","2","2","Create Account [""DetailCheckAccount"", ""STANDARD""] via accountsApi","Account details map should not be null; Account details should include 'status'; Newly created account should be ACTIVE"
-"[TC-1B3B94F5] TC-040: Retry on flaky login flow (US-001)","QA Team","retry, login","Design","ATR Portal\Reliability","1","1","Initialize Login_Page",""
-"[TC-1B3B94F5] TC-040: Retry on flaky login flow (US-001)","QA Team","retry, login","Design","ATR Portal\Reliability","1","2","Enter Username [""retry.user@atrportal.com""] via loginPage",""
-"[TC-1B3B94F5] TC-040: Retry on flaky login flow (US-001)","QA Team","retry, login","Design","ATR Portal\Reliability","1","3","Enter Password [""Retry@1234""] via loginPage",""
-"[TC-1B3B94F5] TC-040: Retry on flaky login flow (US-001)","QA Team","retry, login","Design","ATR Portal\Reliability","1","4","Click Login on loginPage","No error should be shown on successful login attempt"
-"[TC-12AD5678] TC-041: Retry on flaky navigation flow (US-004)","QA Team","retry, navigation","Design","ATR Portal\Reliability","2","1","Initialize Navigation_Page",""
-"[TC-12AD5678] TC-041: Retry on flaky navigation flow (US-004)","QA Team","retry, navigation","Design","ATR Portal\Reliability","2","2","Go To Dashboard on navPage",""
-"[TC-BA68EAFC] TC-042: BusinessFunctions login+navigate with retry (US-010)","QA Team","retry, regression","Design","ATR Portal\Reliability","2","1","Initialize Test",""
-"[TC-BA68EAFC] TC-042: BusinessFunctions login+navigate with retry (US-010)","QA Team","retry, regression","Design","ATR Portal\Reliability","2","2","Login And Navigate [""retry.bf.user@atrportal.com"", ""BF@Retry1""] via businessFunctions",""
-"[TC-F831285B] TC-043: Verify RetryAnalyzer max retry count (US-010)","QA Team","utility","Design","ATR Portal\Reliability","3","1","Get Max Retry Count on RetryAnalyzer","RetryAnalyzer should be configured for 3 max retries"
-"[TC-B31E6E3F] TC-030: POC login page — enter credentials and submit (US-001)","QA Team","poc, login","Design","ATR Portal\POC","1","1","Initialize Login_Page",""
-"[TC-B31E6E3F] TC-030: POC login page — enter credentials and submit (US-001)","QA Team","poc, login","Design","ATR Portal\POC","1","2","Enter Username [""poc.user@atrportal.com""] via loginPage",""
-"[TC-B31E6E3F] TC-030: POC login page — enter credentials and submit (US-001)","QA Team","poc, login","Design","ATR Portal\POC","1","3","Enter Password [""POC@pass123""] via loginPage",""
-"[TC-B31E6E3F] TC-030: POC login page — enter credentials and submit (US-001)","QA Team","poc, login","Design","ATR Portal\POC","1","4","Click Login on loginPage","URL should be present after login"
-"[TC-8FB69374] TC-031: POC — Register new user via BusinessFunctions (US-001)","QA Team","poc, registration","Design","ATR Portal\POC","2","1","Initialize Test",""
-"[TC-09DF4433] TC-032: POC — Home page welcome and quick links visible (US-003)","QA Team","poc, homepage","Design","ATR Portal\POC","2","1","Initialize ATR_HomePage",""
-"[TC-09DF4433] TC-032: POC — Home page welcome and quick links visible (US-003)","QA Team","poc, homepage","Design","ATR Portal\POC","2","2","Get User Greeting on homePage",""
-"[TC-09DF4433] TC-032: POC — Home page welcome and quick links visible (US-003)","QA Team","poc, homepage","Design","ATR Portal\POC","2","3","Is Quick Links Section Visible on homePage",""
-"[TC-0A893F1A] TC-033: POC — Direct RegisterUser_Page interaction (US-002)","QA Team","poc, registration","Design","ATR Portal\POC","2","1","Navigate to BASE_URL + ""/register",""
-"[TC-0A893F1A] TC-033: POC — Direct RegisterUser_Page interaction (US-002)","QA Team","poc, registration","Design","ATR Portal\POC","2","2","Initialize RegisterUser_Page",""
-"[TC-5664F942] TC-034: POC — Playwright login flow (US-009)","QA Team","poc, playwright","Design","ATR Portal\POC","3","1","Initialize ATR_Portal_Playwright_Page",""
-"[TC-5664F942] TC-034: POC — Playwright login flow (US-009)","QA Team","poc, playwright","Design","ATR Portal\POC","3","2","Open Portal on playwrightPage",""
-"[TC-5664F942] TC-034: POC — Playwright login flow (US-009)","QA Team","poc, playwright","Design","ATR Portal\POC","3","3","Login With Playwright [""playwright.user@atrportal.com"", ""PW@Test1234""] via playwrightPage",""
-"[TC-5664F942] TC-034: POC — Playwright login flow (US-009)","QA Team","poc, playwright","Design","ATR Portal\POC","3","4","Is Logged In on playwrightPage",""
-"[TC-5664F942] TC-034: POC — Playwright login flow (US-009)","QA Team","poc, playwright","Design","ATR Portal\POC","3","5","Close on playwrightPage","Page title should be present"
-"[TC-16BE13E3] TC-001: Login and navigate to dashboard via BusinessFunctions (US-001)","QA Team","smoke, login","Design","ATR Portal\Authentication","1","1","Initialize Test",""
-"[TC-16BE13E3] TC-001: Login and navigate to dashboard via BusinessFunctions (US-001)","QA Team","smoke, login","Design","ATR Portal\Authentication","1","2","Login And Navigate [""testuser@atrportal.com"", ""Test@1234""] via businessFunctions","Should be on dashboard after login"
-"[TC-64DD42DA] TC-002: Direct Login_Page and Navigation_Page interaction (US-001)","QA Team","smoke, login","Design","ATR Portal\Authentication","1","1","Initialize Login_Page",""
-"[TC-64DD42DA] TC-002: Direct Login_Page and Navigation_Page interaction (US-001)","QA Team","smoke, login","Design","ATR Portal\Authentication","1","2","Enter Username [""admin@atrportal.com""] via loginPage",""
-"[TC-64DD42DA] TC-002: Direct Login_Page and Navigation_Page interaction (US-001)","QA Team","smoke, login","Design","ATR Portal\Authentication","1","3","Enter Password [""Admin@1234""] via loginPage",""
-"[TC-64DD42DA] TC-002: Direct Login_Page and Navigation_Page interaction (US-001)","QA Team","smoke, login","Design","ATR Portal\Authentication","1","4","Click Login on loginPage",""
-"[TC-64DD42DA] TC-002: Direct Login_Page and Navigation_Page interaction (US-001)","QA Team","smoke, login","Design","ATR Portal\Authentication","1","5","Initialize Navigation_Page",""
-"[TC-64DD42DA] TC-002: Direct Login_Page and Navigation_Page interaction (US-001)","QA Team","smoke, login","Design","ATR Portal\Authentication","1","6","Go To Dashboard on nav","No login error should be shown for valid credentials"
-"[TC-ABB92EAB] TC-003: Certificate SSO login and home page verification (US-003)","QA Team","regression, login","Design","ATR Portal\Authentication","1","1","Initialize Test",""
-"[TC-ABB92EAB] TC-003: Certificate SSO login and home page verification (US-003)","QA Team","regression, login","Design","ATR Portal\Authentication","1","2","Login With Certificate [""ssouser@atrportal.com""] via businessFunctions",""
-"[TC-ABB92EAB] TC-003: Certificate SSO login and home page verification (US-003)","QA Team","regression, login","Design","ATR Portal\Authentication","1","3","Initialize ATR_HomePage",""
-"[TC-ABB92EAB] TC-003: Certificate SSO login and home page verification (US-003)","QA Team","regression, login","Design","ATR Portal\Authentication","1","4","Get Welcome Message on homePage","Welcome message should be present after login; Quick links section should be visible on home page"
-"[TC-73C0D53C] TC-004: Invalid credentials show login error (US-001)","QA Team","regression, negative","Design","ATR Portal\Authentication","2","1","Initialize Login_Page",""
-"[TC-73C0D53C] TC-004: Invalid credentials show login error (US-001)","QA Team","regression, negative","Design","ATR Portal\Authentication","2","2","Enter Username [""invalid@atrportal.com""] via loginPage",""
-"[TC-73C0D53C] TC-004: Invalid credentials show login error (US-001)","QA Team","regression, negative","Design","ATR Portal\Authentication","2","3","Enter Password [""WrongPassword!""] via loginPage",""
-"[TC-73C0D53C] TC-004: Invalid credentials show login error (US-001)","QA Team","regression, negative","Design","ATR Portal\Authentication","2","4","Click Login on loginPage","Login error message should be displayed for invalid credentials"
-"[TC-DBD8F1A2] TC-020: Menu navigation to Dashboard (US-004)","QA Team","smoke, navigation","Design","ATR Portal\Navigation","1","1","Initialize Menu_Page",""
-"[TC-DBD8F1A2] TC-020: Menu navigation to Dashboard (US-004)","QA Team","smoke, navigation","Design","ATR Portal\Navigation","1","2","Open Menu on menuPage",""
-"[TC-DBD8F1A2] TC-020: Menu navigation to Dashboard (US-004)","QA Team","smoke, navigation","Design","ATR Portal\Navigation","1","3","Click Menu Item [""Dashboard""] via menuPage",""
-"[TC-DBD8F1A2] TC-020: Menu navigation to Dashboard (US-004)","QA Team","smoke, navigation","Design","ATR Portal\Navigation","1","4","Initialize Navigation_Page",""
-"[TC-DBD8F1A2] TC-020: Menu navigation to Dashboard (US-004)","QA Team","smoke, navigation","Design","ATR Portal\Navigation","1","5","Verify Current Page [""Dashboard""] via navPage","URL should reflect Dashboard navigation"
-"[TC-C0E7EA80] TC-021: All expected menu items are visible (US-004)","QA Team","regression, navigation","Design","ATR Portal\Navigation","2","1","Initialize Menu_Page",""
-"[TC-C0E7EA80] TC-021: All expected menu items are visible (US-004)","QA Team","regression, navigation","Design","ATR Portal\Navigation","2","2","Open Menu on menuPage","Dashboard menu item should be visible; Reports menu item should be visible"
-"[TC-91BEEBC0] Navigate Via Business Functions (US-004)","QA Team","","Design","ATR Portal\Navigation","3","1","Initialize Test",""
-"[TC-91BEEBC0] Navigate Via Business Functions (US-004)","QA Team","","Design","ATR Portal\Navigation","3","2","Navigate Via Menu [""Reports""] via businessFunctions",""
-"[TC-E1D771B1] TC-023: Menu search filters items (US-004)","QA Team","regression, navigation","Design","ATR Portal\Navigation","2","1","Initialize Menu_Page",""
-"[TC-E1D771B1] TC-023: Menu search filters items (US-004)","QA Team","regression, navigation","Design","ATR Portal\Navigation","2","2","Open Menu on menuPage",""
-"[TC-E1D771B1] TC-023: Menu search filters items (US-004)","QA Team","regression, navigation","Design","ATR Portal\Navigation","2","3","Search Menu [""Report""] via menuPage",""
-"[TC-E1D771B1] TC-023: Menu search filters items (US-004)","QA Team","regression, navigation","Design","ATR Portal\Navigation","2","4","Get All Menu Items on menuPage","Menu items list should not be null"
-"[TC-6A3054F9] TC-024: Navigate to Settings via Navigation_Page (US-004)","QA Team","regression, navigation","Design","ATR Portal\Navigation","2","1","Initialize Navigation_Page",""
-"[TC-6A3054F9] TC-024: Navigate to Settings via Navigation_Page (US-004)","QA Team","regression, navigation","Design","ATR Portal\Navigation","2","2","Go To Settings on navPage",""
-"[TC-6A3054F9] TC-024: Navigate to Settings via Navigation_Page (US-004)","QA Team","regression, navigation","Design","ATR Portal\Navigation","2","3","Verify Current Page [""Settings""] via navPage",""
-"[TC-14DED73A] Menu Item Availability (US-004)","QA Team","","Design","ATR Portal\Navigation","3","1","Initialize Test",""
-"[TC-14DED73A] Menu Item Availability (US-004)","QA Team","","Design","ATR Portal\Navigation","3","2","Is Menu Item Available [""Dashboard""] via businessFunctions",""
-"[TC-416C3A67] TC-050: Configure Azure deployment via UI + ADU SaaS API (US-007)","QA Team","cloud, regression","Design","ATR Portal\Cloud Integration","2","1","Initialize Azure_Cloud_Page",""
-"[TC-416C3A67] TC-050: Configure Azure deployment via UI + ADU SaaS API (US-007)","QA Team","cloud, regression","Design","ATR Portal\Cloud Integration","2","2","Enter Resource Group [""rg-automation-test""] via azurePage",""
-"[TC-416C3A67] TC-050: Configure Azure deployment via UI + ADU SaaS API (US-007)","QA Team","cloud, regression","Design","ATR Portal\Cloud Integration","2","3","Select Region [""US-EAST""] via azurePage",""
-"[TC-416C3A67] TC-050: Configure Azure deployment via UI + ADU SaaS API (US-007)","QA Team","cloud, regression","Design","ATR Portal\Cloud Integration","2","4","Configure Azure Deployment [tenantId, subscriptionId] via azurePage",""
-"[TC-416C3A67] TC-050: Configure Azure deployment via UI + ADU SaaS API (US-007)","QA Team","cloud, regression","Design","ATR Portal\Cloud Integration","2","5","Get Deployment Status on azurePage","Deployment status should be returned"
-"[TC-B912BDA3] TC-051: Core reference data API returns valid region list (US-007)","QA Team","cloud, api","Design","ATR Portal\Cloud Integration","2","1","Initialize Core_Reference_Page",""
-"[TC-B912BDA3] TC-051: Core reference data API returns valid region list (US-007)","QA Team","cloud, api","Design","ATR Portal\Cloud Integration","2","2","Get Reference Data [""REGIONS""] via coreRefPage","Regions list should not be null; Regions list should not be empty"
-"[TC-33F2938C] TC-052: Provision ADU SaaS instance via API and check status (US-007)","QA Team","cloud, api","Design","ATR Portal\Cloud Integration","2","1","Initialize Adu_Saas_Page",""
-"[TC-33F2938C] TC-052: Provision ADU SaaS instance via API and check status (US-007)","QA Team","cloud, api","Design","ATR Portal\Cloud Integration","2","2","Provision Adu Saas Instance [""cloud-tenant-001"", ""ENTERPRISE""] via aduSaasPage",""
-"[TC-33F2938C] TC-052: Provision ADU SaaS instance via API and check status (US-007)","QA Team","cloud, api","Design","ATR Portal\Cloud Integration","2","3","Get Saas Status [instanceId] via aduSaasPage","Instance ID should not be null after provisioning; Newly provisioned instance should be RUNNING"
-"[TC-7E0D4649] TC-053: Update SaaS configuration via API (US-007)","QA Team","cloud, api","Design","ATR Portal\Cloud Integration","2","1","Initialize Adu_Saas_Page",""
-"[TC-7E0D4649] TC-053: Update SaaS configuration via API (US-007)","QA Team","cloud, api","Design","ATR Portal\Cloud Integration","2","2","Provision Adu Saas Instance [""config-tenant-002"", ""PREMIUM""] via aduSaasPage",""
-"[TC-7E0D4649] TC-053: Update SaaS configuration via API (US-007)","QA Team","cloud, api","Design","ATR Portal\Cloud Integration","2","3","Update Saas Configuration [instanceId, ""maxConnections"", ""100""] via aduSaasPage","Configuration update should return true"
-"[TC-1B8ADCF1] TC-054: Azure_Cloud_Page verifyAduSaasStatus delegates to API (US-007)","QA Team","cloud, regression","Design","ATR Portal\Cloud Integration","2","1","Initialize Azure_Cloud_Page",""
-"[TC-1B8ADCF1] TC-054: Azure_Cloud_Page verifyAduSaasStatus delegates to API (US-007)","QA Team","cloud, regression","Design","ATR Portal\Cloud Integration","2","2","Verify Adu Saas Status [""instance-check-001""] via azurePage","Status should not be null"
-"[TC-4A0432D0] TC-055: Bonus — Financial calculator via FinancialCalculators_Perfecto_Page (US-008)","QA Team","cloud, perfecto","Design","ATR Portal\Cloud Integration","2","1","Initialize FinancialCalculators_Perfecto_Page",""
-"[TC-4A0432D0] TC-055: Bonus — Financial calculator via FinancialCalculators_Perfecto_Page (US-008)","QA Team","cloud, perfecto","Design","ATR Portal\Cloud Integration","2","2","Calculate Interest [10000.0, 5.5, 3] via calcPage","Interest result should be a non-negative number"
+"TC_ID","Title","AssignedTo","Tags","State","AreaPath","Priority","LinkedUserStory","PageObjectsUsed","Steps"
+"TC-18965002","TC-010: Create account via API and verify in UI","QA Team","regression, accounts","Design","ATR Portal\Application Management","2","US-005","Accounts_Page, MyAccount_Page","1. Initialize Accounts_Page
+2. Create Account [accountName, ""ENTERPRISE""] via accountsApi
+3. Initialize MyAccount_Page
+4. Verify Account [accountName] via myAccountPage
+   → Expected: Account ID should not be null"
+"TC-C0557BB5","TC-011: Full account creation and verification via BusinessFunctions","QA Team","regression, accounts","Design","ATR Portal\Application Management","2","US-005","","1. Initialize Test
+2. Create And Verify Account [""EnterpriseAccount-001"", ""ENTERPRISE""] via businessFunctions"
+"TC-9320E83F","TC-012: Application grid loads correctly","QA Team","regression, ui","Design","ATR Portal\Application Management","2","US-006","ATR_Application_Page","1. Initialize ATR_Application_Page
+2. Get Application Count on appPage
+   → Expected: Application grid count should be non-negative"
+"TC-F0E32A0F","TC-013: Create application via UI and verify in grid","QA Team","regression, accounts","Design","ATR Portal\Application Management","2","US-006","ATR_Application_Page","1. Initialize ATR_Application_Page
+2. Create Application [appName, accountName] via appPage"
+"TC-B6446116","TC-014: Get account details from API and assert key fields","QA Team","regression, api","Design","ATR Portal\Application Management","2","US-005","Accounts_Page","1. Initialize Accounts_Page
+2. Create Account [""DetailCheckAccount"", ""STANDARD""] via accountsApi
+   → Expected: Account details map should not be null; Account details should include 'status'; Newly created account should be ACTIVE"
+"TC-1B3B94F5","TC-040: Retry on flaky login flow","QA Team","retry, login","Design","ATR Portal\Reliability","1","US-001","Login_Page","1. Initialize Login_Page
+2. Enter Username [""retry.user@atrportal.com""] via loginPage
+3. Enter Password [""Retry@1234""] via loginPage
+4. Click Login on loginPage
+   → Expected: No error should be shown on successful login attempt"
+"TC-12AD5678","TC-041: Retry on flaky navigation flow","QA Team","retry, navigation","Design","ATR Portal\Reliability","2","US-004","Navigation_Page","1. Initialize Navigation_Page
+2. Go To Dashboard on navPage"
+"TC-BA68EAFC","TC-042: BusinessFunctions login+navigate with retry","QA Team","retry, regression","Design","ATR Portal\Reliability","2","US-010","","1. Initialize Test
+2. Login And Navigate [""retry.bf.user@atrportal.com"", ""BF@Retry1""] via businessFunctions"
+"TC-F831285B","TC-043: Verify RetryAnalyzer max retry count","QA Team","utility","Design","ATR Portal\Reliability","3","US-010","","1. Get Max Retry Count on RetryAnalyzer
+   → Expected: RetryAnalyzer should be configured for 3 max retries"
+"TC-B31E6E3F","TC-030: POC login page — enter credentials and submit","QA Team","poc, login","Design","ATR Portal\POC","1","US-001","Login_Page","1. Initialize Login_Page
+2. Enter Username [""poc.user@atrportal.com""] via loginPage
+3. Enter Password [""POC@pass123""] via loginPage
+4. Click Login on loginPage
+   → Expected: URL should be present after login"
+"TC-8FB69374","TC-031: POC — Register new user via BusinessFunctions","QA Team","poc, registration","Design","ATR Portal\POC","2","US-001","","1. Initialize Test"
+"TC-09DF4433","TC-032: POC — Home page welcome and quick links visible","QA Team","poc, homepage","Design","ATR Portal\POC","2","US-003","ATR_HomePage","1. Initialize ATR_HomePage
+2. Get User Greeting on homePage
+3. Is Quick Links Section Visible on homePage"
+"TC-0A893F1A","TC-033: POC — Direct RegisterUser_Page interaction","QA Team","poc, registration","Design","ATR Portal\POC","2","US-002","RegisterUser_Page","1. Navigate to BASE_URL + ""/register
+2. Initialize RegisterUser_Page"
+"TC-5664F942","TC-034: POC — Playwright login flow","QA Team","poc, playwright","Design","ATR Portal\POC","3","US-009","ATR_Portal_Playwright_Page","1. Initialize ATR_Portal_Playwright_Page
+2. Open Portal on playwrightPage
+3. Login With Playwright [""playwright.user@atrportal.com"", ""PW@Test1234""] via playwrightPage
+4. Is Logged In on playwrightPage
+5. Close on playwrightPage
+   → Expected: Page title should be present"
+"TC-16BE13E3","TC-001: Login and navigate to dashboard via BusinessFunctions","QA Team","smoke, login","Design","ATR Portal\Authentication","1","US-001","","1. Initialize Test
+2. Login And Navigate [""testuser@atrportal.com"", ""Test@1234""] via businessFunctions
+   → Expected: Should be on dashboard after login"
+"TC-64DD42DA","TC-002: Direct Login_Page and Navigation_Page interaction","QA Team","smoke, login","Design","ATR Portal\Authentication","1","US-001","Login_Page, Navigation_Page","1. Initialize Login_Page
+2. Enter Username [""admin@atrportal.com""] via loginPage
+3. Enter Password [""Admin@1234""] via loginPage
+4. Click Login on loginPage
+5. Initialize Navigation_Page
+6. Go To Dashboard on nav
+   → Expected: No login error should be shown for valid credentials"
+"TC-ABB92EAB","TC-003: Certificate SSO login and home page verification","QA Team","regression, login","Design","ATR Portal\Authentication","1","US-003","ATR_HomePage","1. Initialize Test
+2. Login With Certificate [""ssouser@atrportal.com""] via businessFunctions
+3. Initialize ATR_HomePage
+4. Get Welcome Message on homePage
+   → Expected: Welcome message should be present after login; Quick links section should be visible on home page"
+"TC-73C0D53C","TC-004: Invalid credentials show login error","QA Team","regression, negative","Design","ATR Portal\Authentication","2","US-001","Login_Page","1. Initialize Login_Page
+2. Enter Username [""invalid@atrportal.com""] via loginPage
+3. Enter Password [""WrongPassword!""] via loginPage
+4. Click Login on loginPage
+   → Expected: Login error message should be displayed for invalid credentials"
+"TC-DBD8F1A2","TC-020: Menu navigation to Dashboard","QA Team","smoke, navigation","Design","ATR Portal\Navigation","1","US-004","Menu_Page, Navigation_Page","1. Initialize Menu_Page
+2. Open Menu on menuPage
+3. Click Menu Item [""Dashboard""] via menuPage
+4. Initialize Navigation_Page
+5. Verify Current Page [""Dashboard""] via navPage
+   → Expected: URL should reflect Dashboard navigation"
+"TC-C0E7EA80","TC-021: All expected menu items are visible","QA Team","regression, navigation","Design","ATR Portal\Navigation","2","US-004","Menu_Page","1. Initialize Menu_Page
+2. Open Menu on menuPage
+   → Expected: Dashboard menu item should be visible; Reports menu item should be visible"
+"TC-91BEEBC0","Navigate Via Business Functions","QA Team","","Design","ATR Portal\Navigation","3","US-004","","1. Initialize Test
+2. Navigate Via Menu [""Reports""] via businessFunctions"
+"TC-E1D771B1","TC-023: Menu search filters items","QA Team","regression, navigation","Design","ATR Portal\Navigation","2","US-004","Menu_Page","1. Initialize Menu_Page
+2. Open Menu on menuPage
+3. Search Menu [""Report""] via menuPage
+4. Get All Menu Items on menuPage
+   → Expected: Menu items list should not be null"
+"TC-6A3054F9","TC-024: Navigate to Settings via Navigation_Page","QA Team","regression, navigation","Design","ATR Portal\Navigation","2","US-004","Navigation_Page","1. Initialize Navigation_Page
+2. Go To Settings on navPage
+3. Verify Current Page [""Settings""] via navPage"
+"TC-14DED73A","Menu Item Availability","QA Team","","Design","ATR Portal\Navigation","3","US-004","","1. Initialize Test
+2. Is Menu Item Available [""Dashboard""] via businessFunctions"
+"TC-416C3A67","TC-050: Configure Azure deployment via UI + ADU SaaS API","QA Team","cloud, regression","Design","ATR Portal\Cloud Integration","2","US-007","Azure_Cloud_Page","1. Initialize Azure_Cloud_Page
+2. Enter Resource Group [""rg-automation-test""] via azurePage
+3. Select Region [""US-EAST""] via azurePage
+4. Configure Azure Deployment [tenantId, subscriptionId] via azurePage
+5. Get Deployment Status on azurePage
+   → Expected: Deployment status should be returned"
+"TC-B912BDA3","TC-051: Core reference data API returns valid region list","QA Team","cloud, api","Design","ATR Portal\Cloud Integration","2","US-007","Core_Reference_Page","1. Initialize Core_Reference_Page
+2. Get Reference Data [""REGIONS""] via coreRefPage
+   → Expected: Regions list should not be null; Regions list should not be empty"
+"TC-33F2938C","TC-052: Provision ADU SaaS instance via API and check status","QA Team","cloud, api","Design","ATR Portal\Cloud Integration","2","US-007","Adu_Saas_Page","1. Initialize Adu_Saas_Page
+2. Provision Adu Saas Instance [""cloud-tenant-001"", ""ENTERPRISE""] via aduSaasPage
+3. Get Saas Status [instanceId] via aduSaasPage
+   → Expected: Instance ID should not be null after provisioning; Newly provisioned instance should be RUNNING"
+"TC-7E0D4649","TC-053: Update SaaS configuration via API","QA Team","cloud, api","Design","ATR Portal\Cloud Integration","2","US-007","Adu_Saas_Page","1. Initialize Adu_Saas_Page
+2. Provision Adu Saas Instance [""config-tenant-002"", ""PREMIUM""] via aduSaasPage
+3. Update Saas Configuration [instanceId, ""maxConnections"", ""100""] via aduSaasPage
+   → Expected: Configuration update should return true"
+"TC-1B8ADCF1","TC-054: Azure_Cloud_Page verifyAduSaasStatus delegates to API","QA Team","cloud, regression","Design","ATR Portal\Cloud Integration","2","US-007","Azure_Cloud_Page","1. Initialize Azure_Cloud_Page
+2. Verify Adu Saas Status [""instance-check-001""] via azurePage
+   → Expected: Status should not be null"
+"TC-4A0432D0","TC-055: Bonus — Financial calculator via FinancialCalculators_Perfecto_Page","QA Team","cloud, perfecto","Design","ATR Portal\Cloud Integration","2","US-008","FinancialCalculators_Perfecto_Page","1. Initialize FinancialCalculators_Perfecto_Page
+2. Calculate Interest [10000.0, 5.5, 3] via calcPage
+   → Expected: Interest result should be a non-negative number"

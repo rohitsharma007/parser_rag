@@ -1,0 +1,203 @@
+[
+  {
+    "tc_id": "TC-DBD8F1A2",
+    "title": "TC-020: Menu navigation to Dashboard",
+    "method_name": "testMenuNavigationToDashboard",
+    "class_name": "ATR_Web_Portal_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "smoke",
+      "navigation"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Navigation",
+    "priority": 1,
+    "linked_us_id": "US-004",
+    "page_objects_used": [
+      "Menu_Page",
+      "Navigation_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Menu_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Open Menu on menuPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Click Menu Item [\"Dashboard\"] via menuPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 4,
+        "action": "Initialize Navigation_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 5,
+        "action": "Verify Current Page [\"Dashboard\"] via navPage",
+        "expected_result": "URL should reflect Dashboard navigation"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-C0E7EA80",
+    "title": "TC-021: All expected menu items are visible",
+    "method_name": "testMenuItemVisibility",
+    "class_name": "ATR_Web_Portal_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "regression",
+      "navigation"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Navigation",
+    "priority": 2,
+    "linked_us_id": "US-004",
+    "page_objects_used": [
+      "Menu_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Menu_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Open Menu on menuPage",
+        "expected_result": "Dashboard menu item should be visible; Reports menu item should be visible"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-91BEEBC0",
+    "title": "Navigate Via Business Functions",
+    "method_name": "testNavigateViaBusinessFunctions",
+    "class_name": "ATR_Web_Portal_Tests",
+    "assigned_to": "QA Team",
+    "tags": [],
+    "state": "Design",
+    "area_path": "ATR Portal\\Navigation",
+    "priority": 3,
+    "linked_us_id": "US-004",
+    "page_objects_used": [],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Test",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Navigate Via Menu [\"Reports\"] via businessFunctions",
+        "expected_result": ""
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-E1D771B1",
+    "title": "TC-023: Menu search filters items",
+    "method_name": "testMenuSearch",
+    "class_name": "ATR_Web_Portal_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "regression",
+      "navigation"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Navigation",
+    "priority": 2,
+    "linked_us_id": "US-004",
+    "page_objects_used": [
+      "Menu_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Menu_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Open Menu on menuPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Search Menu [\"Report\"] via menuPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 4,
+        "action": "Get All Menu Items on menuPage",
+        "expected_result": "Menu items list should not be null"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-6A3054F9",
+    "title": "TC-024: Navigate to Settings via Navigation_Page",
+    "method_name": "testNavigateToSettings",
+    "class_name": "ATR_Web_Portal_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "regression",
+      "navigation"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Navigation",
+    "priority": 2,
+    "linked_us_id": "US-004",
+    "page_objects_used": [
+      "Navigation_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Navigation_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Go To Settings on navPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Verify Current Page [\"Settings\"] via navPage",
+        "expected_result": ""
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-14DED73A",
+    "title": "Menu Item Availability",
+    "method_name": "testMenuItemAvailability",
+    "class_name": "ATR_Web_Portal_Tests",
+    "assigned_to": "QA Team",
+    "tags": [],
+    "state": "Design",
+    "area_path": "ATR Portal\\Navigation",
+    "priority": 3,
+    "linked_us_id": "US-004",
+    "page_objects_used": [],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Test",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Is Menu Item Available [\"Dashboard\"] via businessFunctions",
+        "expected_result": ""
+      }
+    ]
+  }
+]

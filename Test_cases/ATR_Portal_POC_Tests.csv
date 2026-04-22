@@ -1,16 +1,18 @@
-"Title","AssignedTo","Tags","State","AreaPath","Priority","Test Step","Step Action","Expected Result"
-"[TC-B31E6E3F] TC-030: POC login page — enter credentials and submit (US-001)","QA Team","poc, login","Design","ATR Portal\POC","1","1","Initialize Login_Page",""
-"[TC-B31E6E3F] TC-030: POC login page — enter credentials and submit (US-001)","QA Team","poc, login","Design","ATR Portal\POC","1","2","Enter Username [""poc.user@atrportal.com""] via loginPage",""
-"[TC-B31E6E3F] TC-030: POC login page — enter credentials and submit (US-001)","QA Team","poc, login","Design","ATR Portal\POC","1","3","Enter Password [""POC@pass123""] via loginPage",""
-"[TC-B31E6E3F] TC-030: POC login page — enter credentials and submit (US-001)","QA Team","poc, login","Design","ATR Portal\POC","1","4","Click Login on loginPage","URL should be present after login"
-"[TC-8FB69374] TC-031: POC — Register new user via BusinessFunctions (US-001)","QA Team","poc, registration","Design","ATR Portal\POC","2","1","Initialize Test",""
-"[TC-09DF4433] TC-032: POC — Home page welcome and quick links visible (US-003)","QA Team","poc, homepage","Design","ATR Portal\POC","2","1","Initialize ATR_HomePage",""
-"[TC-09DF4433] TC-032: POC — Home page welcome and quick links visible (US-003)","QA Team","poc, homepage","Design","ATR Portal\POC","2","2","Get User Greeting on homePage",""
-"[TC-09DF4433] TC-032: POC — Home page welcome and quick links visible (US-003)","QA Team","poc, homepage","Design","ATR Portal\POC","2","3","Is Quick Links Section Visible on homePage",""
-"[TC-0A893F1A] TC-033: POC — Direct RegisterUser_Page interaction (US-002)","QA Team","poc, registration","Design","ATR Portal\POC","2","1","Navigate to BASE_URL + ""/register",""
-"[TC-0A893F1A] TC-033: POC — Direct RegisterUser_Page interaction (US-002)","QA Team","poc, registration","Design","ATR Portal\POC","2","2","Initialize RegisterUser_Page",""
-"[TC-5664F942] TC-034: POC — Playwright login flow (US-009)","QA Team","poc, playwright","Design","ATR Portal\POC","3","1","Initialize ATR_Portal_Playwright_Page",""
-"[TC-5664F942] TC-034: POC — Playwright login flow (US-009)","QA Team","poc, playwright","Design","ATR Portal\POC","3","2","Open Portal on playwrightPage",""
-"[TC-5664F942] TC-034: POC — Playwright login flow (US-009)","QA Team","poc, playwright","Design","ATR Portal\POC","3","3","Login With Playwright [""playwright.user@atrportal.com"", ""PW@Test1234""] via playwrightPage",""
-"[TC-5664F942] TC-034: POC — Playwright login flow (US-009)","QA Team","poc, playwright","Design","ATR Portal\POC","3","4","Is Logged In on playwrightPage",""
-"[TC-5664F942] TC-034: POC — Playwright login flow (US-009)","QA Team","poc, playwright","Design","ATR Portal\POC","3","5","Close on playwrightPage","Page title should be present"
+"TC_ID","Title","AssignedTo","Tags","State","AreaPath","Priority","LinkedUserStory","PageObjectsUsed","Steps"
+"TC-B31E6E3F","TC-030: POC login page — enter credentials and submit","QA Team","poc, login","Design","ATR Portal\POC","1","US-001","Login_Page","1. Initialize Login_Page
+2. Enter Username [""poc.user@atrportal.com""] via loginPage
+3. Enter Password [""POC@pass123""] via loginPage
+4. Click Login on loginPage
+   → Expected: URL should be present after login"
+"TC-8FB69374","TC-031: POC — Register new user via BusinessFunctions","QA Team","poc, registration","Design","ATR Portal\POC","2","US-001","","1. Initialize Test"
+"TC-09DF4433","TC-032: POC — Home page welcome and quick links visible","QA Team","poc, homepage","Design","ATR Portal\POC","2","US-003","ATR_HomePage","1. Initialize ATR_HomePage
+2. Get User Greeting on homePage
+3. Is Quick Links Section Visible on homePage"
+"TC-0A893F1A","TC-033: POC — Direct RegisterUser_Page interaction","QA Team","poc, registration","Design","ATR Portal\POC","2","US-002","RegisterUser_Page","1. Navigate to BASE_URL + ""/register
+2. Initialize RegisterUser_Page"
+"TC-5664F942","TC-034: POC — Playwright login flow","QA Team","poc, playwright","Design","ATR Portal\POC","3","US-009","ATR_Portal_Playwright_Page","1. Initialize ATR_Portal_Playwright_Page
+2. Open Portal on playwrightPage
+3. Login With Playwright [""playwright.user@atrportal.com"", ""PW@Test1234""] via playwrightPage
+4. Is Logged In on playwrightPage
+5. Close on playwrightPage
+   → Expected: Page title should be present"
