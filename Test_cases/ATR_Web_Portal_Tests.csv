@@ -1,0 +1,22 @@
+"TC_ID","Title","AssignedTo","Tags","State","AreaPath","Priority","LinkedUserStory","PageObjectsUsed","Steps"
+"TC-DBD8F1A2","TC-020: Menu navigation to Dashboard","QA Team","smoke, navigation","Design","ATR Portal\Navigation","1","US-004","Menu_Page, Navigation_Page","1. Initialize Menu_Page
+2. Open Menu on menuPage
+3. Click Menu Item [""Dashboard""] via menuPage
+4. Initialize Navigation_Page
+5. Verify Current Page [""Dashboard""] via navPage
+   → Expected: URL should reflect Dashboard navigation"
+"TC-C0E7EA80","TC-021: All expected menu items are visible","QA Team","regression, navigation","Design","ATR Portal\Navigation","2","US-004","Menu_Page","1. Initialize Menu_Page
+2. Open Menu on menuPage
+   → Expected: Dashboard menu item should be visible; Reports menu item should be visible"
+"TC-91BEEBC0","Navigate Via Business Functions","QA Team","","Design","ATR Portal\Navigation","3","US-004","","1. Initialize Test
+2. Navigate Via Menu [""Reports""] via businessFunctions"
+"TC-E1D771B1","TC-023: Menu search filters items","QA Team","regression, navigation","Design","ATR Portal\Navigation","2","US-004","Menu_Page","1. Initialize Menu_Page
+2. Open Menu on menuPage
+3. Search Menu [""Report""] via menuPage
+4. Get All Menu Items on menuPage
+   → Expected: Menu items list should not be null"
+"TC-6A3054F9","TC-024: Navigate to Settings via Navigation_Page","QA Team","regression, navigation","Design","ATR Portal\Navigation","2","US-004","Navigation_Page","1. Initialize Navigation_Page
+2. Go To Settings on navPage
+3. Verify Current Page [""Settings""] via navPage"
+"TC-14DED73A","Menu Item Availability","QA Team","","Design","ATR Portal\Navigation","3","US-004","","1. Initialize Test
+2. Is Menu Item Available [""Dashboard""] via businessFunctions"

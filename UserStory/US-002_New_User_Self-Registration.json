@@ -1,0 +1,16 @@
+{
+  "id": "US-002",
+  "type": "User Story",
+  "title": "New User Self-Registration",
+  "state": "Active",
+  "area_path": "ATR Portal\\User Management",
+  "description": "As a new user,\nI want to register an account on the ATR Portal,\nSo that I can gain access to portal services without administrator intervention.",
+  "acceptance_criteria": [
+    "✓ TC-033: POC — Direct RegisterUser_Page interaction  ← TC-0A893F1A"
+  ],
+  "linked_tc_ids": [
+    "TC-0A893F1A"
+  ],
+  "parent_id": "",
+  "url": ""
+}

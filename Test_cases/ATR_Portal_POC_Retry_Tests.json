@@ -1,0 +1,122 @@
+[
+  {
+    "tc_id": "TC-1B3B94F5",
+    "title": "TC-040: Retry on flaky login flow",
+    "method_name": "testLoginWithRetry",
+    "class_name": "ATR_Portal_POC_Retry_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "retry",
+      "login"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Reliability",
+    "priority": 1,
+    "linked_us_id": "US-001",
+    "page_objects_used": [
+      "Login_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Login_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Enter Username [\"retry.user@atrportal.com\"] via loginPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Enter Password [\"Retry@1234\"] via loginPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 4,
+        "action": "Click Login on loginPage",
+        "expected_result": "No error should be shown on successful login attempt"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-12AD5678",
+    "title": "TC-041: Retry on flaky navigation flow",
+    "method_name": "testNavigationWithRetry",
+    "class_name": "ATR_Portal_POC_Retry_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "retry",
+      "navigation"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Reliability",
+    "priority": 2,
+    "linked_us_id": "US-004",
+    "page_objects_used": [
+      "Navigation_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Navigation_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Go To Dashboard on navPage",
+        "expected_result": ""
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-BA68EAFC",
+    "title": "TC-042: BusinessFunctions login+navigate with retry",
+    "method_name": "testBusinessFunctionLoginWithRetry",
+    "class_name": "ATR_Portal_POC_Retry_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "retry",
+      "regression"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Reliability",
+    "priority": 2,
+    "linked_us_id": "US-010",
+    "page_objects_used": [],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Test",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Login And Navigate [\"retry.bf.user@atrportal.com\", \"BF@Retry1\"] via businessFunctions",
+        "expected_result": ""
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-F831285B",
+    "title": "TC-043: Verify RetryAnalyzer max retry count",
+    "method_name": "testRetryAnalyzerConfiguration",
+    "class_name": "ATR_Portal_POC_Retry_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "utility"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Reliability",
+    "priority": 3,
+    "linked_us_id": "US-010",
+    "page_objects_used": [],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Get Max Retry Count on RetryAnalyzer",
+        "expected_result": "RetryAnalyzer should be configured for 3 max retries"
+      }
+    ]
+  }
+]

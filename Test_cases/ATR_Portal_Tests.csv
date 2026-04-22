@@ -1,0 +1,21 @@
+"TC_ID","Title","AssignedTo","Tags","State","AreaPath","Priority","LinkedUserStory","PageObjectsUsed","Steps"
+"TC-16BE13E3","TC-001: Login and navigate to dashboard via BusinessFunctions","QA Team","smoke, login","Design","ATR Portal\Authentication","1","US-001","","1. Initialize Test
+2. Login And Navigate [""testuser@atrportal.com"", ""Test@1234""] via businessFunctions
+   → Expected: Should be on dashboard after login"
+"TC-64DD42DA","TC-002: Direct Login_Page and Navigation_Page interaction","QA Team","smoke, login","Design","ATR Portal\Authentication","1","US-001","Login_Page, Navigation_Page","1. Initialize Login_Page
+2. Enter Username [""admin@atrportal.com""] via loginPage
+3. Enter Password [""Admin@1234""] via loginPage
+4. Click Login on loginPage
+5. Initialize Navigation_Page
+6. Go To Dashboard on nav
+   → Expected: No login error should be shown for valid credentials"
+"TC-ABB92EAB","TC-003: Certificate SSO login and home page verification","QA Team","regression, login","Design","ATR Portal\Authentication","1","US-003","ATR_HomePage","1. Initialize Test
+2. Login With Certificate [""ssouser@atrportal.com""] via businessFunctions
+3. Initialize ATR_HomePage
+4. Get Welcome Message on homePage
+   → Expected: Welcome message should be present after login; Quick links section should be visible on home page"
+"TC-73C0D53C","TC-004: Invalid credentials show login error","QA Team","regression, negative","Design","ATR Portal\Authentication","2","US-001","Login_Page","1. Initialize Login_Page
+2. Enter Username [""invalid@atrportal.com""] via loginPage
+3. Enter Password [""WrongPassword!""] via loginPage
+4. Click Login on loginPage
+   → Expected: Login error message should be displayed for invalid credentials"

@@ -1,0 +1,24 @@
+"TC_ID","Title","AssignedTo","Tags","State","AreaPath","Priority","LinkedUserStory","PageObjectsUsed","Steps"
+"TC-416C3A67","TC-050: Configure Azure deployment via UI + ADU SaaS API","QA Team","cloud, regression","Design","ATR Portal\Cloud Integration","2","US-007","Azure_Cloud_Page","1. Initialize Azure_Cloud_Page
+2. Enter Resource Group [""rg-automation-test""] via azurePage
+3. Select Region [""US-EAST""] via azurePage
+4. Configure Azure Deployment [tenantId, subscriptionId] via azurePage
+5. Get Deployment Status on azurePage
+   → Expected: Deployment status should be returned"
+"TC-B912BDA3","TC-051: Core reference data API returns valid region list","QA Team","cloud, api","Design","ATR Portal\Cloud Integration","2","US-007","Core_Reference_Page","1. Initialize Core_Reference_Page
+2. Get Reference Data [""REGIONS""] via coreRefPage
+   → Expected: Regions list should not be null; Regions list should not be empty"
+"TC-33F2938C","TC-052: Provision ADU SaaS instance via API and check status","QA Team","cloud, api","Design","ATR Portal\Cloud Integration","2","US-007","Adu_Saas_Page","1. Initialize Adu_Saas_Page
+2. Provision Adu Saas Instance [""cloud-tenant-001"", ""ENTERPRISE""] via aduSaasPage
+3. Get Saas Status [instanceId] via aduSaasPage
+   → Expected: Instance ID should not be null after provisioning; Newly provisioned instance should be RUNNING"
+"TC-7E0D4649","TC-053: Update SaaS configuration via API","QA Team","cloud, api","Design","ATR Portal\Cloud Integration","2","US-007","Adu_Saas_Page","1. Initialize Adu_Saas_Page
+2. Provision Adu Saas Instance [""config-tenant-002"", ""PREMIUM""] via aduSaasPage
+3. Update Saas Configuration [instanceId, ""maxConnections"", ""100""] via aduSaasPage
+   → Expected: Configuration update should return true"
+"TC-1B8ADCF1","TC-054: Azure_Cloud_Page verifyAduSaasStatus delegates to API","QA Team","cloud, regression","Design","ATR Portal\Cloud Integration","2","US-007","Azure_Cloud_Page","1. Initialize Azure_Cloud_Page
+2. Verify Adu Saas Status [""instance-check-001""] via azurePage
+   → Expected: Status should not be null"
+"TC-4A0432D0","TC-055: Bonus — Financial calculator via FinancialCalculators_Perfecto_Page","QA Team","cloud, perfecto","Design","ATR Portal\Cloud Integration","2","US-008","FinancialCalculators_Perfecto_Page","1. Initialize FinancialCalculators_Perfecto_Page
+2. Calculate Interest [10000.0, 5.5, 3] via calcPage
+   → Expected: Interest result should be a non-negative number"

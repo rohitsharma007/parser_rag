@@ -1,0 +1,18 @@
+{
+  "id": "US-006",
+  "type": "User Story",
+  "title": "Application Grid and Provisioning",
+  "state": "Active",
+  "area_path": "ATR Portal\\Application Management",
+  "description": "As a application administrator,\nI want to create and manage applications through the ATR Application page,\nSo that I can keep the application inventory accurate and up to date.",
+  "acceptance_criteria": [
+    "✓ TC-012: Application grid loads correctly  ← TC-9320E83F",
+    "✓ TC-013: Create application via UI and verify in grid  ← TC-F0E32A0F"
+  ],
+  "linked_tc_ids": [
+    "TC-9320E83F",
+    "TC-F0E32A0F"
+  ],
+  "parent_id": "",
+  "url": ""
+}

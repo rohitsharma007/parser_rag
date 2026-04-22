@@ -1,0 +1,175 @@
+[
+  {
+    "tc_id": "TC-B31E6E3F",
+    "title": "TC-030: POC login page — enter credentials and submit",
+    "method_name": "testPortalLoginPOC",
+    "class_name": "ATR_Portal_POC_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "poc",
+      "login"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\POC",
+    "priority": 1,
+    "linked_us_id": "US-001",
+    "page_objects_used": [
+      "Login_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Login_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Enter Username [\"poc.user@atrportal.com\"] via loginPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Enter Password [\"POC@pass123\"] via loginPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 4,
+        "action": "Click Login on loginPage",
+        "expected_result": "URL should be present after login"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-8FB69374",
+    "title": "TC-031: POC — Register new user via BusinessFunctions",
+    "method_name": "testRegisterNewUserPOC",
+    "class_name": "ATR_Portal_POC_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "poc",
+      "registration"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\POC",
+    "priority": 2,
+    "linked_us_id": "US-001",
+    "page_objects_used": [],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Test",
+        "expected_result": ""
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-09DF4433",
+    "title": "TC-032: POC — Home page welcome and quick links visible",
+    "method_name": "testHomePagePOC",
+    "class_name": "ATR_Portal_POC_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "poc",
+      "homepage"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\POC",
+    "priority": 2,
+    "linked_us_id": "US-003",
+    "page_objects_used": [
+      "ATR_HomePage"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize ATR_HomePage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Get User Greeting on homePage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Is Quick Links Section Visible on homePage",
+        "expected_result": ""
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-0A893F1A",
+    "title": "TC-033: POC — Direct RegisterUser_Page interaction",
+    "method_name": "testDirectRegistrationPagePOC",
+    "class_name": "ATR_Portal_POC_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "poc",
+      "registration"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\POC",
+    "priority": 2,
+    "linked_us_id": "US-002",
+    "page_objects_used": [
+      "RegisterUser_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Navigate to BASE_URL + \"/register",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Initialize RegisterUser_Page",
+        "expected_result": ""
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-5664F942",
+    "title": "TC-034: POC — Playwright login flow",
+    "method_name": "testPlaywrightLoginPOC",
+    "class_name": "ATR_Portal_POC_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "poc",
+      "playwright"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\POC",
+    "priority": 3,
+    "linked_us_id": "US-009",
+    "page_objects_used": [
+      "ATR_Portal_Playwright_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize ATR_Portal_Playwright_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Open Portal on playwrightPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Login With Playwright [\"playwright.user@atrportal.com\", \"PW@Test1234\"] via playwrightPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 4,
+        "action": "Is Logged In on playwrightPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 5,
+        "action": "Close on playwrightPage",
+        "expected_result": "Page title should be present"
+      }
+    ]
+  }
+]

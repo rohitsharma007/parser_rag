@@ -1,0 +1,161 @@
+[
+  {
+    "tc_id": "TC-18965002",
+    "title": "TC-010: Create account via API and verify in UI",
+    "method_name": "testCreateAccountViaAPI",
+    "class_name": "ATR_Application_Regression_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "regression",
+      "accounts"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Application Management",
+    "priority": 2,
+    "linked_us_id": "US-005",
+    "page_objects_used": [
+      "Accounts_Page",
+      "MyAccount_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Accounts_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Create Account [accountName, \"ENTERPRISE\"] via accountsApi",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Initialize MyAccount_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 4,
+        "action": "Verify Account [accountName] via myAccountPage",
+        "expected_result": "Account ID should not be null"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-C0557BB5",
+    "title": "TC-011: Full account creation and verification via BusinessFunctions",
+    "method_name": "testFullApplicationFlow",
+    "class_name": "ATR_Application_Regression_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "regression",
+      "accounts"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Application Management",
+    "priority": 2,
+    "linked_us_id": "US-005",
+    "page_objects_used": [],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Test",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Create And Verify Account [\"EnterpriseAccount-001\", \"ENTERPRISE\"] via businessFunctions",
+        "expected_result": ""
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-9320E83F",
+    "title": "TC-012: Application grid loads correctly",
+    "method_name": "testApplicationGridLoad",
+    "class_name": "ATR_Application_Regression_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "regression",
+      "ui"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Application Management",
+    "priority": 2,
+    "linked_us_id": "US-006",
+    "page_objects_used": [
+      "ATR_Application_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize ATR_Application_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Get Application Count on appPage",
+        "expected_result": "Application grid count should be non-negative"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-F0E32A0F",
+    "title": "TC-013: Create application via UI and verify in grid",
+    "method_name": "testCreateApplicationThroughUI",
+    "class_name": "ATR_Application_Regression_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "regression",
+      "accounts"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Application Management",
+    "priority": 2,
+    "linked_us_id": "US-006",
+    "page_objects_used": [
+      "ATR_Application_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize ATR_Application_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Create Application [appName, accountName] via appPage",
+        "expected_result": ""
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-B6446116",
+    "title": "TC-014: Get account details from API and assert key fields",
+    "method_name": "testGetAccountDetailsFromAPI",
+    "class_name": "ATR_Application_Regression_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "regression",
+      "api"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Application Management",
+    "priority": 2,
+    "linked_us_id": "US-005",
+    "page_objects_used": [
+      "Accounts_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Accounts_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Create Account [\"DetailCheckAccount\", \"STANDARD\"] via accountsApi",
+        "expected_result": "Account details map should not be null; Account details should include 'status'; Newly created account should be ACTIVE"
+      }
+    ]
+  }
+]

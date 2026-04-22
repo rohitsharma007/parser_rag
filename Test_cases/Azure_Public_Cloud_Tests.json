@@ -1,0 +1,207 @@
+[
+  {
+    "tc_id": "TC-416C3A67",
+    "title": "TC-050: Configure Azure deployment via UI + ADU SaaS API",
+    "method_name": "testAzureDeploymentConfig",
+    "class_name": "Azure_Public_Cloud_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "cloud",
+      "regression"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Cloud Integration",
+    "priority": 2,
+    "linked_us_id": "US-007",
+    "page_objects_used": [
+      "Azure_Cloud_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Azure_Cloud_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Enter Resource Group [\"rg-automation-test\"] via azurePage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Select Region [\"US-EAST\"] via azurePage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 4,
+        "action": "Configure Azure Deployment [tenantId, subscriptionId] via azurePage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 5,
+        "action": "Get Deployment Status on azurePage",
+        "expected_result": "Deployment status should be returned"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-B912BDA3",
+    "title": "TC-051: Core reference data API returns valid region list",
+    "method_name": "testCoreReferenceData",
+    "class_name": "Azure_Public_Cloud_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "cloud",
+      "api"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Cloud Integration",
+    "priority": 2,
+    "linked_us_id": "US-007",
+    "page_objects_used": [
+      "Core_Reference_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Core_Reference_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Get Reference Data [\"REGIONS\"] via coreRefPage",
+        "expected_result": "Regions list should not be null; Regions list should not be empty"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-33F2938C",
+    "title": "TC-052: Provision ADU SaaS instance via API and check status",
+    "method_name": "testAduSaasProvisioning",
+    "class_name": "Azure_Public_Cloud_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "cloud",
+      "api"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Cloud Integration",
+    "priority": 2,
+    "linked_us_id": "US-007",
+    "page_objects_used": [
+      "Adu_Saas_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Adu_Saas_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Provision Adu Saas Instance [\"cloud-tenant-001\", \"ENTERPRISE\"] via aduSaasPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Get Saas Status [instanceId] via aduSaasPage",
+        "expected_result": "Instance ID should not be null after provisioning; Newly provisioned instance should be RUNNING"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-7E0D4649",
+    "title": "TC-053: Update SaaS configuration via API",
+    "method_name": "testUpdateSaasConfiguration",
+    "class_name": "Azure_Public_Cloud_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "cloud",
+      "api"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Cloud Integration",
+    "priority": 2,
+    "linked_us_id": "US-007",
+    "page_objects_used": [
+      "Adu_Saas_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Adu_Saas_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Provision Adu Saas Instance [\"config-tenant-002\", \"PREMIUM\"] via aduSaasPage",
+        "expected_result": ""
+      },
+      {
+        "step_number": 3,
+        "action": "Update Saas Configuration [instanceId, \"maxConnections\", \"100\"] via aduSaasPage",
+        "expected_result": "Configuration update should return true"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-1B8ADCF1",
+    "title": "TC-054: Azure_Cloud_Page verifyAduSaasStatus delegates to API",
+    "method_name": "testAzurePageSaasStatusCheck",
+    "class_name": "Azure_Public_Cloud_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "cloud",
+      "regression"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Cloud Integration",
+    "priority": 2,
+    "linked_us_id": "US-007",
+    "page_objects_used": [
+      "Azure_Cloud_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize Azure_Cloud_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Verify Adu Saas Status [\"instance-check-001\"] via azurePage",
+        "expected_result": "Status should not be null"
+      }
+    ]
+  },
+  {
+    "tc_id": "TC-4A0432D0",
+    "title": "TC-055: Bonus — Financial calculator via FinancialCalculators_Perfecto_Page",
+    "method_name": "testFinancialCalculatorPerfecto",
+    "class_name": "Azure_Public_Cloud_Tests",
+    "assigned_to": "QA Team",
+    "tags": [
+      "cloud",
+      "perfecto"
+    ],
+    "state": "Design",
+    "area_path": "ATR Portal\\Cloud Integration",
+    "priority": 2,
+    "linked_us_id": "US-008",
+    "page_objects_used": [
+      "FinancialCalculators_Perfecto_Page"
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Initialize FinancialCalculators_Perfecto_Page",
+        "expected_result": ""
+      },
+      {
+        "step_number": 2,
+        "action": "Calculate Interest [10000.0, 5.5, 3] via calcPage",
+        "expected_result": "Interest result should be a non-negative number"
+      }
+    ]
+  }
+]

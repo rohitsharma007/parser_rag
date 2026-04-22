@@ -1,0 +1,16 @@
+{
+  "id": "US-008",
+  "type": "User Story",
+  "title": "Financial Calculator Accessibility",
+  "state": "Active",
+  "area_path": "ATR Portal\\Financial Services",
+  "description": "As a financial analyst,\nI want to use interest and other financial calculators in the portal,\nSo that I can perform accurate financial computations without leaving the platform.",
+  "acceptance_criteria": [
+    "✓ TC-055: Bonus — Financial calculator via FinancialCalculators_Perfecto_Page  ← TC-4A0432D0"
+  ],
+  "linked_tc_ids": [
+    "TC-4A0432D0"
+  ],
+  "parent_id": "",
+  "url": ""
+}
